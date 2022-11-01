@@ -6,5 +6,5 @@ from django.conf import settings
 # 유저모델 생성
 class User(AbstractUser):
     followings = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, symmetrical=False, related_name="follower"
+        "self", symmetrical=False, related_name="follower"
     )
