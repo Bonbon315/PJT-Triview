@@ -9,7 +9,7 @@ def create(request):
         if location_form.is_valid():
             location = location_form.save(commit=False)
             location.save()
-            return redirect()
+            return redirect("")
     else:
         location_form = LocationForm()
     context = {"location_form": location_form}
