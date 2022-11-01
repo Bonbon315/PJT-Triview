@@ -7,9 +7,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 CATEGORY_CHOICES = (
-    ("tour", "관광지"),
-    ("restaurant", "음식점"),
-    ("hotel", "숙소"),
+    ("관광지", "관광지"),
+    ("음식점", "음식점"),
+    ("숙소", "숙소"),
 )
 
 
@@ -23,9 +23,4 @@ class Location(models.Model):
     )
     country = models.CharField(max_length=80)
     city = models.CharField(max_length=80)
-    grade = models.IntegerField(
-        default=3,
-        validators=[MaxValueValidator(5), MinValueValidator(1)],
-        verbose_name="평점",
-    )
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default="관광지")
