@@ -2,10 +2,11 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-<h1>수정하기</h1>
-<form action="" method="POST" enctype="multipart/form-data">
+  <h1 class='tit'>회원 정보수정</h1>
+  <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {% bootstrap_form form %}
-    {% bootstrap_button button_type="submit" content="OK" %}
-</form>
+    <button type="submit" class="btn-sb btnC">수정</button>
+
+  </form>
 {% endblock content %}
