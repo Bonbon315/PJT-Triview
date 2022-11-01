@@ -17,7 +17,7 @@ body {
 	width: 180px;
 }
 .nav-area li {
-	margin-right: 10px;
+	margin-right: 25px;
 	position: relative;
 }
 .nav-area li:last-child {
@@ -38,4 +38,23 @@ body {
 .nav-area li a:hover {
 	color: var(--main);
 	font-weight: 700;
+}
+.nav-area li a:hover::after {
+	width: 100%;
+}
+
+.tit {
+	font-size: 2rem;
+	font-weight: 700;
+	text-align: center;
+	margin: 2rem 0;
+}
+
+.footer {
+	height: 30px;
+	position: fixed;
+	bottom: 0px;
+}
+.footer .cpr {
+	font-size: 0.8em;
 }
