@@ -2,21 +2,23 @@
 	font-family: "NanumSquareNeo";
 	font-style: normal;
 	font-weight: 400;
-	src: url(/NanumSquareNeoTTF-bRg);
+	src: url(./webfont/NanumSquareNeoTTF-bRg.eot);
 	src: local("NanumSquareNeo"), local("NanumSquareNeo"),
-		url(./NanumSquareNeoTTF-bRg.eot?#iefix) format("embedded-opentype"),
-		url(./NanumSquareNeoTTF-bRg.woff2) format("woff2"),
-		url(./NanumSquareNeoTTF-bRg.woff) format("woff"),
-		url(./NanumSquareNeoTTF-bRg.ttf) format("truetype");
+		url(./webfont/NanumSquareNeoTTF-bRg.eot?#iefix)
+			format("embedded-opentype"),
+		url(./webfont/NanumSquareNeoTTF-bRg.woff2) format("woff2"),
+		url(./webfont/NanumSquareNeoTTF-bRg.woff) format("woff"),
+		url(./webfont/NanumSquareNeoTTF-bRg.ttf) format("truetype");
 }
 @font-face {
 	font-family: "NanumSquareNeo";
 	font-style: normal;
 	font-weight: 700;
-	src: url(./NanumSquareNeoTTF-bBd);
+	src: url(./webfont/NanumSquareNeoTTF-bBd);
 	src: local("NanumSquareNeo"), local("NanumSquareNeo"),
-		url(./NanumSquareNeoTTF-bBd.eot?#iefix) format("embedded-opentype"),
-		url(./NanumSquareNeoTTF-bBd.woff2) format("woff2"),
-		url(./NanumSquareNeoTTF-bBd.woff) format("woff"),
-		url(./NanumSquareNeoTTF-bBd.ttf) format("truetype");
+		url(./webfont/NanumSquareNeoTTF-bBd.eot?#iefix)
+			format("embedded-opentype"),
+		url(./webfont/NanumSquareNeoTTF-bBd.woff2) format("woff2"),
+		url(./webfont/NanumSquareNeoTTF-bBd.woff) format("woff"),
+		url(./webfont/NanumSquareNeoTTF-bBd.ttf) format("truetype");
 }

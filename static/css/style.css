@@ -12,7 +12,30 @@ body {
 	line-height: 1.5;
 	background: var(--bg);
 }
-.nav-area li:hover {
+
+.logo img {
+	width: 180px;
+}
+.nav-area li {
+	margin-right: 10px;
+	position: relative;
+}
+.nav-area li:last-child {
+	margin-right: 0;
+}
+.nav-area li a::after {
+	content: "";
+	display: block;
+	background: var(--main);
+	width: 0%;
+	height: 3px;
+	position: absolute;
+	bottom: -3px;
+	left: 0px;
+	transition: 0.2s;
+}
+
+.nav-area li a:hover {
 	color: var(--main);
 	font-weight: 700;
 }
