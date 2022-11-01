@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
 
 # 유저폼 생성
-class CustomUserCreationForm(UserCreationForm):
+class User(UserCreationForm):
     class Meta:
         model = get_user_model()
         fields = ("username", "email", "password1", "password2")
