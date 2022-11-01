@@ -11,3 +11,7 @@ body {
 	line-height: 1.5;
 	background: var(--bg);
 }
+.nav-area li:hover {
+	color: var(--main);
+	font-weight: 700;
+}
