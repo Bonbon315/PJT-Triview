@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+
+{% bootstrap_javascript %}
+
+<form action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {% bootstrap_form location_form %}
+  {% bootstrap_button button_type="submit" content="장소 등록"%}
+</form>
+
+{% endblock %}
