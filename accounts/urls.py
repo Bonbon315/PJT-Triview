@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 app_name = "accounts"
 
@@ -10,4 +12,4 @@ urlpatterns = [
     path("detail/<int:pk>/", views.detail, name="detail"),
     path("update/", views.update, name="update"),
     path("<int:pk>/follow/", views.follow, name="follow"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

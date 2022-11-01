@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% if user.profile_image %}
+<img class="image" src="{{ user.profile_image.url }}" />
+{% endif %}
 <div>
     <h1 class="tit">My Page</h1>
     <div class="d-flex justify-content-between">
