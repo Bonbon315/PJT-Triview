@@ -2,7 +2,7 @@
 	font-family: "NanumSquareNeo";
 	font-style: normal;
 	font-weight: 400;
-	src: url(./NanumSquareNeoTTF-bRg);
+	src: url(/NanumSquareNeoTTF-bRg);
 	src: local("NanumSquareNeo"), local("NanumSquareNeo"),
 		url(./NanumSquareNeoTTF-bRg.eot?#iefix) format("embedded-opentype"),
 		url(./NanumSquareNeoTTF-bRg.woff2) format("woff2"),
