@@ -37,9 +37,6 @@
                         </li>
                         {% if request.user.is_authenticated %}
                         <li>
-                            <a href="#">리뷰</a>
-                        </li>
-                        <li>
                             <a href="{% url 'accounts:detail' request.user.pk %}">{{request.user}}
                             </a>
                         </li>
