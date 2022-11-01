@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if user.profile_image %}
+<img class="image" src="{{ user.profile_image.url }}" />
+{% endif %}
 <h1>{{user.username }}님</h1>
 <h1>{{user.email}}</h1>
+
 <h1>팔로잉:{{user.followings.count}}</h1>
 <h1>팔로워:{{user.follower.count}}</h1>
 
