@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from imagekit.models import ProcessedImageField
 from django.conf import settings
+
 # Create your models here.
 Companion = (
     ('커플','커플'),

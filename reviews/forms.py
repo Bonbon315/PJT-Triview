@@ -7,7 +7,7 @@ class ReviewForm(forms.ModelForm):
         model = Review
         fields = {
             "title",
-            "location",
+            "traveled_at",
             "grade",
             "companion",
             "content",            
