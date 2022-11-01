@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from imagekit.models import ProcessedImageField
 from django.conf import settings
-
+from location import models as location_models
 # Create your models here.
 Companion = (
     ('커플','커플'),
@@ -49,4 +49,4 @@ class Review(models.Model):
   like_users = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name="like_reviews"
     )
-  location = models.ForeignKey('location.Location', on_delete=models.CASCADE)
+  location = models.ForeignKey(location_models.Location, on_delete=models.CASCADE)
