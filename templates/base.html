@@ -40,7 +40,7 @@
                             <a href="#">리뷰</a>
                         </li>
                         <li>
-                            <a href="#">{{request.user}}
+                            <a href="{% url 'accounts:detail' request.user.pk %}">{{request.user}}
                             </a>
                         </li>
                         <li>
