@@ -3,6 +3,7 @@ from .forms import ReviewForm
 from .models import Review
 from location.models import Location
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 # 여행지-리뷰페이지
@@ -15,6 +16,7 @@ def index(request, location_pk):
     }
     return render(request, "reviews/index.html", context)
 
+
 # 여행지-리뷰작성
 @login_required
 def create(request, location_pk):
@@ -26,15 +28,16 @@ def create(request, location_pk):
             review.location = location
             review.user = request.user
             review.save()
-            return redirect("reviews:index")
+            return redirect("reviews:index", location.pk)
     else:
         review_form = ReviewForm()
     context = {
         "review_form": review_form,
     }
 
-    return render(request, "reviews/create.html", context)  
-  
+    return render(request, "reviews/create.html", context)
+
+
 @login_required
 def update(request, pk):
     review = Review.objects.get(pk=pk)

@@ -3,7 +3,7 @@
 {% block indexbody %}
 <div class="container">
   <div class="review_section">
-    <h1 class="tit">여행지 이름</h1>
+    <h1 class="tit">{{location.title}}</h1>
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -47,14 +47,15 @@
     <!--리뷰 쌓이는 곳-->
     <div class="row pb-2">
       <div class="col-12 pt-1">
-        {% for review in review %}
-        <p>작성자:{{ review.user }}</p>
-        <p>{{ review.grade }}</p>
-        <p>{{ review.title }}</p>
-        <p>{{ review.created_at }}</p>
-        <p>{{ review.content }}
-        <p>
-          {% endfor %}
+        {% for review in reviews %}
+          {% if review.location == location %}
+          <p>작성자:{{ review.user }}</p>
+          <p>{{ review.grade }}</p>
+          <p>{{ review.title }}</p>
+          <p>{{ review.created_at }}</p>
+          <p>{{ review.content }}</p>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
   </section>
