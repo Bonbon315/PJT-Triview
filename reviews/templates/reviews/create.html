@@ -1,3 +1,14 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 
-create
+{% block content %}
+<h1 class='text-center my-3'>리뷰작성 페이지</h1><hr>
+
+<form action='' method='POST' enctype="multipart/form-data">
+  {% csrf_token %}
+  {% bootstrap_form review_form %}
+  {% bootstrap_button button_type='submit' content='글쓰기' %}
+</form>
+
+
+{% endblock content %}

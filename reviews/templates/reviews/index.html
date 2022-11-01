@@ -1,2 +1,24 @@
 {% extends 'base.html' %}
 
+{% block indexbody %}
+  <div class="container">
+    <section class="review_section1">여행지-리뷰</section>
+    <div class="review_section2">해당여행지 대표 이미지</div>
+    <section class="review_section3">여행지 소개</section>
+    <section class="review_section4">
+      여행지 리뷰
+      <!--리뷰 쌓이는 곳-->
+      <div class="row pb-2">
+        <div class="col-12 pt-1">    
+            {% for review in review %}
+            <p>작성자:{{ review.user }}</p>
+            <p>{{ review.grade }}</p>
+            <p>{{ review.title }}</p>
+            <p>{{ review.created_at }}</p>
+            <p>{{ review.content }}<p>
+            {% endfor %}   
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock indexbody %}
