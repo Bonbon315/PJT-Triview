@@ -37,11 +37,11 @@
                             <a href="#">리뷰</a>
                         </li>
                         <li>
-                            <a href="#">user name
+                            <a href="#">{{request.user}}
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{% url 'accounts:logout' %}">
                                 로그아웃
                             </a>
                         </li>
@@ -50,10 +50,10 @@
                             <a href="#">여행</a>
                         </li>
                         <li>
-                            <a href="#">회원가입</a>
+                            <a href="{% url 'accounts:signup' %}">회원가입</a>
                         </li>
                         <li>
-                            <a href="#">로그인</a>
+                            <a href="{% url 'accounts:login' %}">로그인</a>
                         </li>
                         {% endif %}
                     </ul>
