@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
-
+{% load widget_tweaks %}
 {% block content %}
-<h1>로그인</h1>
-<form action="" method="POST">
+  <h1 class="tit">로그인</h1>
+  <form action="" method="POST">
     {% csrf_token %}
     {% bootstrap_form form %}
-    {% bootstrap_button button_type="submit" content="OK" %}
-</form>
+    <button type="submit" class="btn-sb">로그인</button>
+
+  </form>
 {% endblock content %}

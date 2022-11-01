@@ -1,6 +1,7 @@
 @import url(./fontall.css);
 :root {
 	--main: #49beb7;
+	--highlight: #83d8d2;
 	--bg: #fcf9ea;
 	--txt: #393e46;
 }
@@ -49,7 +50,17 @@ body {
 	text-align: center;
 	margin: 2rem 0;
 }
-
+.btn-sb {
+	background: var(--main);
+	color: var(--bg);
+	width: 100%;
+	padding: 1rem;
+	margin-top: 1.5rem;
+	border-radius: 0.5rem;
+}
+.btn-sb:hover {
+	background: var(--highlight);
+}
 .footer {
 	height: 30px;
 	position: fixed;
