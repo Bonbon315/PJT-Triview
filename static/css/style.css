@@ -1,0 +1,13 @@
+:root {
+	--main: #49beb7;
+	--bg: #fcf9ea;
+	--txt: #393e46;
+}
+
+body {
+	font-family: "NanumSquareNeo", sans-serif;
+	color: var(--txt);
+	font-size: 20px;
+	line-height: 1.5;
+	background: var(--bg);
+}
