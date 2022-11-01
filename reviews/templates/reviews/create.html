@@ -1,14 +1,26 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
-
+{% load widget_tweaks %}
 {% block content %}
-<h1 class='text-center my-3'>리뷰작성 페이지</h1><hr>
+<h1 class='tit'>리뷰</h1>
 
 <form action='' method='POST' enctype="multipart/form-data">
   {% csrf_token %}
-  {% bootstrap_form review_form %}
-  {% bootstrap_button button_type='submit' content='글쓰기' %}
-</form>
+  <label for="" class="form-label">여행 일자</label>
+  {% render_field review_form.traveled_at class+="form-control"%}
+  <label for="" class="form-label">여행 유형</label>
+  {% render_field review_form.companion class+="form-control"%}
+  <label for="" class="form-label">평점</label>
+  {% render_field review_form.grade class+="form-control"%}
+  <label for="" class="form-label">리뷰 제목</label>
+  {% render_field review_form.title class+="form-control" placeholder=review_form.title.label %}
+  <label for="" class="form-label">리뷰</label>
+  {% render_field review_form.content class+="form-control" placeholder=review_form.content.label %}
+  <label for="" class="form-label">리뷰 이미지</label>
+  {% render_field review_form.image class+="form-control"%}
 
+  <button type="submit" class="btn-sb">리뷰 등록</button>
+
+</form>
 
 {% endblock content %}

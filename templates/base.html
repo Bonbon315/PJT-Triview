@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% endblock css %}
     {% block script %}
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script defer src="{% static 'js/script.js' %}"></script>
     {% endblock script %}
     <title>TRV</title>
@@ -33,7 +33,7 @@
                 <div class="">
                     <ul class="nav-area d-flex justify-content-end">
                         <li>
-                            <a href="#">여행</a>
+                            <a href="{% url 'location:index' %}">여행</a>
                         </li>
                         {% if request.user.is_authenticated %}
                         <li>
@@ -49,9 +49,6 @@
                             </a>
                         </li>
                         {% else %}
-                        <li>
-                            <a href="{% url 'location:index' %}">여행</a>
-                        </li>
                         <li>
                             <a href="{% url 'accounts:signup' %}">회원가입</a>
                         </li>
@@ -76,6 +73,8 @@
             <p class="cpr">2022 &copy; TRV</p>
         </div>
     </footer>
+    {% bootstrap_javascript %}
+
 </body>
 
 </html>
