@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{user.username }}님</h1>
+<h1>{{user.email}}</h1>
+<h1>팔로잉:{{user.followings.count}}</h1>
+<h1>팔로워:{{user.follower.count}}</h1>
+
+<!--로그인 유무에 따라 팔로우 가능, 자기 자신이 팔로우 금지해둠-->
+{% if request.user != user %}
+{% if request.user.is_authenticated %}
+{% if user not in request.user.followings.all %}
+<button><a href="{% url 'accounts:follow' user.pk %}">팔로잉 하기</a></button>
+{% else %}
+<button><a href="{% url 'accounts:follow' user.pk %}">팔로잉 취소</a></button>
+{% endif %}
+{% else %}
+<button><a href="{% url 'accounts:login' %}">로그인하세요</a></button>
+{% endif %}
+{% endif %}
+<!--자기자신만 정보 수정 링크 보이게 해둠-->
+{% if request.user.pk == user.pk %}
+<a href="{% url 'accounts:update' %}">정보 수정</a>
+{% endif %}
+{% endblock content %}

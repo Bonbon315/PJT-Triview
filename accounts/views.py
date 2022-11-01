@@ -43,3 +43,34 @@ def log_in(request):
 def log_out(request):
     logout(request)
     return redirect("index")
+
+
+# 프로필 확인
+def detail(request, pk):
+    user = get_user_model().objects.get(pk=pk)
+    return render(request, "accounts/detail.html", {"user": user})
+
+
+# 유저 정보 변경
+@login_required
+def update(request):
+    if request.method == "POST":
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect("accounts:detail", request.user.pk)
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+    context = {"form": form}
+    return render(request, "accounts/update.html", context)
+
+
+@login_required
+def follow(request, pk):
+    if request.user != get_user_model().objects.get(pk=pk):
+        if request.user not in get_user_model().objects.get(pk=pk).follower.all():
+            request.user.followings.add(get_user_model().objects.get(pk=pk))
+        else:
+            request.user.followings.remove(get_user_model().objects.get(pk=pk))
+
+    return redirect("accounts:detail", pk)
