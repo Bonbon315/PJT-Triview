@@ -5,6 +5,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import CustomUserChangeForm, User
+from django.http import Http404
 
 # Create your views here.
 # 회원가입
@@ -35,3 +36,10 @@ def log_in(request):
         return render(request, "accounts/login.html", context)
     else:
         return redirect("index")
+
+
+# 로그아웃
+@login_required
+def log_out(request):
+    logout(request)
+    return redirect("index")
