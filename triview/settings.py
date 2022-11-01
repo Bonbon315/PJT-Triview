@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "reviews",
     "accounts",
+    "location",
     "django_bootstrap5",
     "django_extensions",
     "imagekit",
