@@ -17,7 +17,7 @@ class Location(models.Model):
     title = models.CharField(max_length=80)
     image = ProcessedImageField(
         upload_to="images/",
-        blank=True,
+        blank=False,
         format="JPEG",
         options={"quality": 80},
     )

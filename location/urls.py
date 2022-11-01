@@ -5,4 +5,5 @@ app_name = "location"
 
 urlpatterns = [
     path("create/", views.create, name="create"),
+    path("", views.index, name="index"),
 ]

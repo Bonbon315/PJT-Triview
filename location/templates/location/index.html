@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+
+{% bootstrap_javascript %}
+<div class="row m-4">
+  {% for location in locations %}
+  <div class="col-4">
+    <div class="card my-3">
+      <img src="{{ location.image.url }}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{ location.title }}</h5>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}
