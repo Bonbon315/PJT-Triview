@@ -44,25 +44,31 @@
     <!--리뷰 쌓이는 곳-->
     <div class="row pb-2">
       <div class="col-12 pt-1">
-        
           {% for review in reviews %}
           {% if review.location == location %}
           <div class="card shadow p-3 mb-3 bg-body rounded">
+            <!--좋아요 기능-->
+            <div class='text-end'>
+              {% if request.user in review.like_users.all %}
+              <a href="{% url 'reviews:like' review.pk %}" class="btn btn-danger btn-sm">♥ {{ review.like_users.count }} </a>
+              {% else %}
+                <a href="{% url 'reviews:like' review.pk %}" class="btn btn-outline-danger btn-sm">♥ {{ review.like_users.count }} </a>
+              {% endif %}
+            </div>
           <p>{{ review.user }}</p>
           <p>{{ review.grade }}</p>
           <p>{{ review.title }}</p>
           <p>{{ review.created_at }}</p>
           <p>{{ review.traveled_at }}</p>
           <p>{{ review.content }}</p>
+          <!--수정, 삭제 기능-->
             {% if request.user == review.user %}
             <a class='btn btn-outline-success btn-sm' href="{% url 'reviews:update' review.pk %}">수정</a>
             <a class='btn btn-outline-success btn-sm' href="{% url 'reviews:delete' review.pk %}">삭제</a>
           {% endif %}
-          
           </div>
           {% endif %}
           {% endfor %}
-        
       </div>
     </div>
   </section>

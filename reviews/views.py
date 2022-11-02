@@ -61,3 +61,12 @@ def delete(request, review_pk):
     review = Review.objects.get(pk=review_pk)  # 어떤 글인지
     review.delete()
     return redirect('reviews:index', review.location.id)
+
+# 여행자 리뷰 좋아요
+def like(request, review_pk):
+    review = Review.objects.get(pk=review_pk)
+    if request.user in review.like_users.all():
+        review.like_users.remove(request.user)
+    else:
+        review.like_users.add(request.user)
+    return redirect("reviews:index", review.location.id)
