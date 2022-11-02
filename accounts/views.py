@@ -47,8 +47,11 @@ def log_out(request):
 
 # 프로필 확인
 def detail(request, pk):
-    user = get_user_model().objects.get(pk=pk)
-    return render(request, "accounts/detail.html", {"user": user})
+    context = {
+        "user": get_user_model().objects.get(pk=pk),
+        "reviews": get_user_model().objects.get(pk=pk).review_set.all(),
+    }
+    return render(request, "accounts/detail.html", context)
 
 
 # 유저 정보 변경
