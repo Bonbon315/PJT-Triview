@@ -72,13 +72,13 @@
             <ul>
                 {% for review in reviews %}
                 <li>
-                    <!--차후 리뷰 목록에 갈수 있는 url 생성 이후 링크 추가목적-->
-                    <!--<a href="{% url 'reviews:' %}">-->{{review.title}}
-                    <!--</a>-->
+                    <a href="{% url 'reviews:index' review.location.pk %}">{{review.location.title}}에서
+                        {{review.title}}</a>
                 </li>
+                {% endfor %}
             </ul>
         </div>
-        {% endfor %}
+
         <div class="prof-del">
             <!--탈퇴 기능-->
             {% if request.user == user %}
