@@ -112,7 +112,8 @@ a:hover {
 #signup-form .form-text {
 	font-size: 0.85rem;
 }
-/* my page */
+
+/* profile */
 .prof-con {
 	overflow: hidden;
 	border-radius: 50%;
@@ -138,6 +139,55 @@ a:hover {
 	position: absolute;
 	right: 0;
 	font-size: 0.95rem;
+}
+
+/* main */
+.idx-sect {
+	margin-bottom: 2.5rem;
+}
+.idx-sect h2 {
+	text-align: left;
+	margin-bottom: 0.8rem;
+}
+
+.cont-area {
+	position: relative;
+	height: 320px;
+	border-radius: 1rem;
+	overflow: hidden;
+}
+.cont-area img {
+	transition: 0.7s;
+	width: 100%;
+}
+.cont-area .cont-txt {
+	position: absolute;
+	left: 50%;
+	bottom: 10%;
+	transform: translateX(-50%);
+}
+.cont-area .cont-txt {
+	color: var(--bg);
+	margin-bottom: 0;
+	transition: 0.5s;
+}
+.cont-area:hover img {
+	transform: scale(1.2);
+}
+.cont-area:hover .cont-txt {
+	color: var(--main);
+}
+.carousel {
+	margin-bottom: 2.5rem;
+}
+.carousel-item .carousel-caption {
+	text-align: left;
+}
+.carousel-item .carousel-caption h5 {
+	font-size: 1.8rem;
+}
+.carousel-item .carousel-caption p {
+	font-size: 1rem;
 }
 
 /* buttons */
