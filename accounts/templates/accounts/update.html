@@ -2,11 +2,12 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-  <h1 class='tit'>회원 정보수정</h1>
-  <form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <button type="submit" class="btn-sb btnC">수정</button>
+<h1 class='tit'>회원 정보수정</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  <h1><a href="{% url 'accounts:password' %}">비밀번호 수정은 여기로</a></h1>
+  <button type="submit" class="btn-sb btnC">수정</button>
+</form>
 
-  </form>
 {% endblock content %}
