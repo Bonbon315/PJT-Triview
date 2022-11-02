@@ -2,9 +2,17 @@
 {% load static %}
 
 {% block content %}
+
 <div class="container">
   <div class="review_section">
     <h1 class="tit">{{location.title}}</h1>
+    <div class="d-flex justify-content-center text-success mb-2">
+      <div class="bi-star{% if location_grade >= 1 %}-fill{% elif 0 < location_grade and location_grade < 1 %}-half{% endif %}"></div>
+      <div class="bi-star{% if location_grade >= 2 %}-fill{% elif 1 < location_grade and location_grade < 2 %}-half{% endif %}"></div>
+      <div class="bi-star{% if location_grade >= 3 %}-fill{% elif 2 < location_grade and location_grade < 3 %}-half{% endif %}"></div>
+      <div class="bi-star{% if location_grade >= 4 %}-fill{% elif 3 < location_grade and location_grade < 4 %}-half{% endif %}"></div>
+      <div class="bi-star{% if location_grade >= 5 %}-fill{% elif 4 < location_grade and location_grade < 5 %}-half{% endif %}"></div>
+    </div>
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
       <div class="carousel-inner">
         <div class="carousel-item active">

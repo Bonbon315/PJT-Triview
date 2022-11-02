@@ -10,9 +10,18 @@ from django.contrib import messages
 def index(request, location_pk):
     location = Location.objects.get(id=location_pk)
     reviews = Review.objects.all()
+    grade = 0
+    cnt = 0
+    for review in reviews:
+        if review.location == location:
+            grade += review.grade
+            cnt += 1
+    if grade:
+        grade /= cnt
     context = {
         "reviews": reviews,
         "location": location,
+        "location_grade": grade,
     }
     return render(request, "reviews/index.html", context)
 
@@ -55,9 +64,11 @@ def update(request, review_pk):
     context = {"review_form": review_form}
     return render(request, "reviews/update.html", context)
 
+
 # 여행자 리뷰 삭제
 @login_required
 def delete(request, review_pk):
     review = Review.objects.get(pk=review_pk)  # 어떤 글인지
     review.delete()
     return redirect('reviews:index', review.location.id)
+
