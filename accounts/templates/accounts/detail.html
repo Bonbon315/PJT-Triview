@@ -4,22 +4,23 @@
 
 <div>
     <h1 class="tit">My Page</h1>
-    {% if user.profile_image %}
-    <div>
-        <img class="prof-img" src="{{ user.profile_image.url }}" />
-    </div>
-    {% endif %}
     <div class="d-flex justify-content-between">
+        {% if user.profile_image %}
+        <div>
+            <img class="prof-img" src="{{ user.profile_image.url }}" />
+        </div>
+        {% endif %}
         <div>
             <h3>{{user.username }}님</h3>
             <p>{{user.email}}</p>
-            <h1>가입일자:</h1>
-            <h1>{{user.date_joined|date:'Y년 m월 d일 A g시 i분 s초'}}</h1>
             <!--접속여부 및 가입일-->
-            <h1>마지막 로그인 시간은:</h1>
-            <h1>{{user.last_login|date:'Y년 m월 d일 A g시 i분 s초'}} 입니다!</h1>
-            <hr>
-
+            <p>가입일자:
+                <span>{{user.date_joined|date:'Y년 m월 d일 A '}}</span>
+            </p>
+            {% if request.user.pk == user.pk %}
+            <p>마지막 로그인 시간은:</p>
+            <p>{{user.last_login|date:'Y년 m월 d일 A g시 i분'}} 입니다!</p>
+            {% endif %}
             <!--자기자신만 정보 수정 링크 보이게 해둠-->
             {% if request.user.pk == user.pk %}
             <a href="{% url 'accounts:update' %}" class="btnC">정보 수정</a>{% endif %}
@@ -48,26 +49,23 @@
         </div>
         {% else %}
         <div>
-            <a href="{% url 'accounts:login' %}">로그인하세요</a>
+            <a href="{% url 'accounts:login' %}" class="btnC">로그인하세요</a>
         </div>
         {% endif %}
         {% else %}
-        <button><a href="{% url 'accounts:logout' %}">자기자신은 팔로잉할 수 없어요!</a></button>
+        <p>자기자신은 팔로잉할 수 없어요!</p>
         {% endif %}
     </div>
-
-    <!--글작성 목록 및 갯수-->
-    <hr>
-    <h1>리뷰 작성 목록</h1>
-    <h2>{{user.username}}님은 총{{reviews.count}}개의 리뷰를 쓰셨습니다!</h2>
+</div>
+<!--글작성 목록 및 갯수-->
+<div>
+    <h4>리뷰 작성 목록</h4>
+    <p>{{user.username}}님은 총{{reviews.count}}개의 리뷰를 쓰셨습니다!</p>
     {% for review in reviews %}
     <!--차후 리뷰 목록에 갈수 있는 url 생성 이후 링크 추가목적-->
     <!--<a href="{% url 'reviews:' %}">-->{{review.title}}
     <!--</a>-->
     {% endfor %}
-
-
-
 </div>
 
 {% endblock content %}
