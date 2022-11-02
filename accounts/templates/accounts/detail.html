@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <div>
     <h1 class="tit">My Page</h1>
     <div class="d-flex justify-content-between">
@@ -66,6 +65,12 @@
     <!--<a href="{% url 'reviews:' %}">-->{{review.title}}
     <!--</a>-->
     {% endfor %}
+
+    <!--탈퇴 기능-->
+    {% if request.user == user %}
+    <a href="{% url 'accounts:dropout' %}">회원 탈퇴</a>
+    {% endif %}
+
 </div>
 
 {% endblock content %}
