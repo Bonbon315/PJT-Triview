@@ -5,6 +5,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import CustomUserChangeForm, User
+from django.views.decorators.http import require_POST
 from django.http import Http404
 
 # Create your views here.
@@ -68,6 +69,7 @@ def update(request):
     return render(request, "accounts/update.html", context)
 
 
+# 팔로우 기능
 @login_required
 def follow(request, pk):
     if request.user != get_user_model().objects.get(pk=pk):
@@ -77,3 +79,17 @@ def follow(request, pk):
             request.user.followings.remove(get_user_model().objects.get(pk=pk))
 
     return redirect("accounts:detail", pk)
+
+
+# 탈퇴
+@login_required
+def dropout(request):
+    if request.method == "POST":
+        request.user.delete()
+        logout(request)
+        return redirect("location:index")
+    else:
+        return render(request, "accounts/dropout.html")
+
+
+# 비번 변경
