@@ -7,6 +7,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import CustomUserChangeForm, User
 from django.views.decorators.http import require_POST
 from django.http import Http404
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 # Create your views here.
 # 회원가입
@@ -93,3 +95,13 @@ def dropout(request):
 
 
 # 비번 변경
+def password(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(instance=request.user, data=request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            return redirect("location:index")
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, "accounts/password.html", {"form": form})
