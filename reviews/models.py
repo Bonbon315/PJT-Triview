@@ -4,6 +4,7 @@ from imagekit.models import ProcessedImageField
 from django.conf import settings
 from location import models as location_models
 # Create your models here.
+# 여행유형 목록
 Companion = (
     ('커플','커플'),
     ('가족', '가족'),
@@ -12,6 +13,7 @@ Companion = (
     ('솔로','솔로'),
 )
 
+# 여행일자 목록
 Month_choices = (
     ('2022-11','2022년 11월'),
     ('2022-10','2022년 10월'),
@@ -27,6 +29,7 @@ Month_choices = (
     ('2021-12','2021년 12월'),
 )
 
+# 리뷰 model class
 class Review(models.Model):
   title = models.CharField(max_length=80)
   content = models.TextField(max_length=200)
