@@ -4,7 +4,7 @@
 
   {% bootstrap_javascript %}
 
-  <form action="" method="POST" enctype="multipart/form-data">
+  <form action="" method="POST" enctype="multipart/form-data" id="loc-form">
     {% csrf_token %}
     {% bootstrap_form location_form %}
     <button type="submit" class="btn-sb btnC">장소등록</button>

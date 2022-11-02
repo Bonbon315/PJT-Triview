@@ -3,8 +3,32 @@
 
 {% block content %}
 
-<div class="container">
-  <div class="review_section">
+  <div class="container">
+
+    <div id="carouselExampleIndicators" class="carousel slide loct-crs" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active  data-bs-interval=" 5000""="5000" "">
+          <img src="{{ location.image.url }}" class="">
+        </div>
+        {% for review in reviews %}
+          {% if review.location == location and review.image %}
+            <div class="carousel-item {% if forloop.counter == 1 %}{% endif %}" id="slide{{forloop.counter}}">
+              <img src="{{ review.image.url }}" class="d-block w-100" height="700px" style="object-fit:cover">
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <div class="review_section d-flex justify-content-center align-items-center">
     <h1 class="tit">{{location.title}}</h1>
     <div class="d-flex justify-content-center text-success mb-2">
       <div class="bi-star{% if location_grade >= 1 %}-fill{% elif 0 < location_grade and location_grade < 1 %}-half{% endif %}"></div>
@@ -13,72 +37,74 @@
       <div class="bi-star{% if location_grade >= 4 %}-fill{% elif 3 < location_grade and location_grade < 4 %}-half{% endif %}"></div>
       <div class="bi-star{% if location_grade >= 5 %}-fill{% elif 4 < location_grade and location_grade < 5 %}-half{% endif %}"></div>
     </div>
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="{{ location.image.url }}" class="d-block w-100" height="700px">
-        </div>
-        {% for review in reviews %}
-        {% if review.location == location and review.image %}
-        <div class="carousel-item {% if forloop.counter == 1 %}{% endif %}" id="slide{{forloop.counter}}">
-          <img src="{{ review.image.url }}" class="d-block w-100" height="700px" style="object-fit:cover">
-        </div>
-        {% endif %}
-        {% endfor %}
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
   </div>
-  <section class="review_section">
-    <h3>여행지 소개</h3>
-    <div class="cont">
-
+  <section class="review_section rev-info">
+    <div class="box">
+      <h3 class="sub-tit">여행지 소개</h3>
+      <div class="cont">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum animi illo harum dolores ab quidem aut aliquid deserunt, tempora repellat dolorum maiores velit corporis? Et autem consequatur velit molestiae reprehenderit.</p>
+      </div>
     </div>
   </section>
-  <section class="review_section">
-    <h3>리뷰</h3>
-    {% if request.user.is_authenticated %}
-      <a class="btn btn-primary" href="{% url 'reviews:create' location.pk %}">리뷰 작성</a>
-    {% endif %}
+  <section class="review_section rev-area">
+    <div>
+      <h3 class="sub-tit">리뷰</h3>
+      {% if request.user.is_authenticated %}
+        <a class="btnC" href="{% url 'reviews:create' location.pk %}">리뷰 작성</a>
+      {% endif %}
+    </div>
     <!--리뷰 쌓이는 곳-->
-    <div class="row pb-2">
-      <div class="col-12 pt-1">
-          {% for review in reviews %}
-          {% if review.location == location %}
-          <div class="card shadow p-3 mb-3 bg-body rounded">
+    <div class="rev">
+      {% for review in reviews %}
+        {% if review.location == location %}
+          <div class="mb-3 box">
+            <div class="rev-cont">
+              <div class="d-flex justify-content-start align-items-center">
+                <div class="rev-prof">
+                  {% if user.profile_image %}
+                    <img class="prof-img" src="{{ user.profile_image.url }}" alt="user profile image"/>
+                  {% else %}
+                    <img class="prof-img" src="{% static 'img/profile_dummy.jpg' %}" alt="user profile image - dummy">
+                  {% endif %}
+                </div>
+                <span>{{ review.user }}</span>
+              </div>
+              <p class="text-end">
+                평점 :{{ review.grade }}
+                <span>
+                  여행일 :{{ review.traveled_at }}
+                </span>
+              </p>
+              <h5 class="sub-tit">{{ review.title }}</h5>
+              <p>{{ review.content }}</p>
+              <p class="rev-crd text-end">작성 :{{ review.created_at }}</p>
+            </div>
             <!--좋아요 기능-->
-            <div class='text-end'>
+            <div class="like-area">
               {% if request.user in review.like_users.all %}
-              <a href="{% url 'reviews:like' review.pk %}" class="btn btn-danger btn-sm">♥ {{ review.like_users.count }} </a>
+                <a href="{% url 'reviews:like' review.pk %}" class="btnC">
+                  {{ review.like_users.count }}
+                  <i class="bi bi-heart-fill"></i>
+                </a>
               {% else %}
-                <a href="{% url 'reviews:like' review.pk %}" class="btn btn-outline-danger btn-sm">♥ {{ review.like_users.count }} </a>
+                <a href="{% url 'reviews:like' review.pk %}" class="btnC btnW">
+                  {{review.like_users.count }}
+                  <i class="bi bi-heart"></i>
+                </a>
               {% endif %}
             </div>
-          <p>{{ review.user }}</p>
-          <p>{{ review.grade }}</p>
-          <p>{{ review.title }}</p>
-          <p>{{ review.created_at }}</p>
-          <p>{{ review.traveled_at }}</p>
-          <p>{{ review.content }}</p>
-          <!--수정, 삭제 기능-->
-            {% if request.user == review.user %}
-            <a class='btn btn-outline-success btn-sm' href="{% url 'reviews:update' review.pk %}">수정</a>
-            <a class='btn btn-outline-success btn-sm' href="{% url 'reviews:delete' review.pk %}">삭제</a>
-          {% endif %}
+            <!--수정, 삭제 기능-->
+            <div>
+              {% if request.user == review.user %}
+                <a class='btnC' href="{% url 'reviews:update' review.pk %}">수정</a>
+                <a class='btnC btnW' href="{% url 'reviews:delete' review.pk %}">삭제</a>
+              {% endif %}
+            </div>
           </div>
-          {% endif %}
-          {% endfor %}
-      </div>
+        {% endif %}
+      {% endfor %}
     </div>
-  </section>
-</div>
+  </div>
+</section>
+
 {% endblock content %}

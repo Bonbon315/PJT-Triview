@@ -2,19 +2,19 @@
 {% load django_bootstrap5 %}
 {% block content %}
 
-{% bootstrap_javascript %}
-<div class="row m-4">
-  {% for location in locations %}
-  <div class="col-4">
-    <a href="{% url 'reviews:index' location.pk %}" class="card my-3">
-      <img src="{{ location.image.url }}" class="card-img-top" height="200px">
-      <div class="card-body">
-        <h5 class="card-title">{{ location.title }}</h5>
+  <div class="row m-4 g-3">
+    {% for location in locations %}
+      <div class="col-3 box">
+        <a href="{% url 'reviews:index' location.pk %}" class="">
+          <div class="box-img">
+            <img src="{{ location.image.url }}">
+          </div>
+          <div class="box-cont">
+            <h5 class="sub-tit">{{ location.title }}</h5>
+          </div>
+        </a>
       </div>
-    </a>
+    {% endfor %}
   </div>
-  {% endfor %}
-</div>
-
 
 {% endblock %}

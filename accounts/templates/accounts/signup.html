@@ -2,10 +2,10 @@
 {% load django_bootstrap5 %}
 {% load widget_tweaks %}
 {% block content %}
-<h1 class="tit">회원 가입</h1>
-<form action="" method="POST" enctype="multipart/form-data" id="signup-form">
-  {% csrf_token %}
-  {% bootstrap_form form %}
-  <button type="submit" class="btn-sb btnC">가입하기</button>
-</form>
+  <h1 class="tit">회원 가입</h1>
+  <form action="" method="POST" enctype="multipart/form-data" id="signup-form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn-sb btnC">가입하기</button>
+  </form>
 {% endblock content %}
