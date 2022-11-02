@@ -10,9 +10,18 @@ from django.contrib.auth.decorators import login_required
 def index(request, location_pk):
     location = Location.objects.get(id=location_pk)
     reviews = Review.objects.all()
+    grade = 0
+    cnt = 0
+    for review in reviews:
+        if review.location == location:
+            grade += review.grade
+            cnt += 1
+    if grade:
+        grade /= cnt
     context = {
         "reviews": reviews,
         "location": location,
+        "location_grade": grade,
     }
     return render(request, "reviews/index.html", context)
 
@@ -55,8 +64,9 @@ def update(request, location_pk):
     }
     return render(request, "reviews/create.html", context)
 
+
 @login_required
 def delete(request, location_pk, pk):
     review = Review.objects.get(pk=pk)
     review.delete()
-    return redirect('reviews:index', location_pk)
+    return redirect("reviews:index", location_pk)
