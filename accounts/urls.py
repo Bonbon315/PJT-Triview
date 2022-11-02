@@ -13,4 +13,5 @@ urlpatterns = [
     path("update/", views.update, name="update"),
     path("<int:pk>/follow/", views.follow, name="follow"),
     path("dropout/", views.dropout, name="dropout"),
+    path("password/", views.password, name="password"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
