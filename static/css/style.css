@@ -97,6 +97,10 @@ a:hover {
 	border: 2px solid var(--main);
 	background: var(--bg);
 }
+#signup-form {
+	max-width: 900px;
+	margin: 0 auto;
+}
 #signup-form input {
 	border: 2px solid rgba(0, 0, 0, 0);
 	border-radius: 0.6rem;
@@ -109,8 +113,38 @@ a:hover {
 	border: 2px solid var(--main);
 	background: var(--bg);
 }
-#signup-form .form-text {
+#signup-form .form-text,
+#update-form .form-text,
+#pw-form .form-text {
 	font-size: 0.85rem;
+}
+#update-form,
+#pw-form,
+#loc-form {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+#update-form input,
+#pw-form input,
+#loc-form input {
+	border: 2px solid rgba(0, 0, 0, 0);
+	border-radius: 0.6rem;
+	background: var(--bgD);
+	padding: 0.3rem;
+	box-sizing: border-box;
+	transition: 0.2s;
+}
+#update-form input:focus,
+#pw-form input:focus,
+#loc-form input:focus {
+	border: 2px solid var(--main);
+	background: var(--bg);
+}
+#update-form .btnW,
+#pw-form .btnW {
+	text-align: center;
+	width: 100%;
 }
 
 /* profile */
@@ -129,15 +163,16 @@ a:hover {
 	margin-top: 1rem;
 	font-size: 0.9rem;
 }
-.prof-log p:first-child {
-	margin-bottom: 1rem;
+.prof-log p {
+	font-size: 0.95rem;
 }
-.prof-del {
-	position: relative;
+.prof-log .btnC {
+	margin-top: 0;
 }
-.prof-del a {
-	position: absolute;
-	right: 0;
+
+.prof-del .btnC {
+	left: 90%;
+	transform: translateX(0);
 	font-size: 0.95rem;
 }
 
@@ -190,6 +225,64 @@ a:hover {
 	font-size: 1rem;
 }
 
+/* location */
+.box {
+	background: var(--bg);
+	box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px rgba(22, 27, 29, 0.1);
+	border-radius: 0.8rem;
+	transition: 0.3s;
+	margin-right: 1rem;
+}
+.box .box-img {
+	margin-top: 0.5rem;
+	height: 200px;
+	overflow: hidden;
+	border-radius: 1rem;
+}
+.box .sub-tit {
+	text-align: center;
+	transition: 0.3s;
+}
+.box:hover {
+	background: var(--bgD);
+	box-shadow: none;
+}
+.box:hover .sub-tit {
+	color: var(--main);
+}
+
+/* review */
+.carousel-item {
+	height: 580px;
+}
+.carousel-item img {
+	width: 100%;
+}
+.review_section .box {
+	padding: 1rem;
+}
+.rev-info .box:hover {
+	background: var(--bg);
+	box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px rgba(22, 27, 29, 0.1);
+}
+.rev-info .box:hover .sub-tit {
+	color: var(--txt);
+}
+.rev-area {
+	margin-top: 5rem;
+}
+.rev .rev-cont .rev-prof {
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-right: 1rem;
+}
+.rev .rev-cont .rev-prof .prof-img {
+	width: 50px;
+	height: 50px;
+}
+
 /* buttons */
 .btnC {
 	background: var(--main);
@@ -199,6 +292,9 @@ a:hover {
 	margin: 1.8rem auto 0;
 	border-radius: 0.5rem;
 	transition: 0.2s;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
 	max-width: 900px;
 }
 .btnC:hover {
