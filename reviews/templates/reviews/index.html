@@ -63,8 +63,8 @@
           <p>{{ review.traveled_at }}</p>
           <p>{{ review.content }}</p>
             {% if request.user == review.user %}
-            <a class='btn btn-outline-success btn-sm' href="{% url 'reviews:update' location.pk %}">수정</a>
-            <a class='btn btn-outline-success btn-sm' href="{% url 'reviews:delete' location.pk %}">삭제</a>
+            <a class='btn btn-outline-success btn-sm' href="{% url 'reviews:update' review.pk %}">수정</a>
+            <a class='btn btn-outline-success btn-sm' href="{% url 'reviews:delete' review.pk %}">삭제</a>
           {% endif %}
           
           </div>

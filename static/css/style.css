@@ -52,12 +52,17 @@ a:hover {
 .nav-area li a:hover::after {
 	width: 100%;
 }
-/* content */
+/* common */
 .tit {
 	font-size: 2rem;
 	font-weight: 700;
 	text-align: center;
 	margin: 2rem 0;
+}
+.sub-tit {
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin: 1rem 0;
 }
 
 /* form control */
@@ -107,14 +112,40 @@ a:hover {
 #signup-form .form-text {
 	font-size: 0.85rem;
 }
-/* mypage */
+/* my page */
+.prof-con {
+	overflow: hidden;
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+	min-width: 150px;
+}
+.prof-img {
+	width: 150px;
+	height: 150px;
+}
+.prof-al {
+	margin-top: 1rem;
+	font-size: 0.9rem;
+}
+.prof-log p:first-child {
+	margin-bottom: 1rem;
+}
+.prof-del {
+	position: relative;
+}
+.prof-del a {
+	position: absolute;
+	right: 0;
+	font-size: 0.95rem;
+}
 
 /* buttons */
 .btnC {
 	background: var(--main);
 	color: var(--bg);
 	display: inline-block;
-	padding: 1rem;
+	padding: 0.5rem 1rem;
 	margin: 1.8rem auto 0;
 	border-radius: 0.5rem;
 	transition: 0.2s;
@@ -131,11 +162,11 @@ a:hover {
 	background: var(--highlight);
 }
 
-.btn-uf {
+.btnW {
 	background: var(--warning);
 	color: var(--bg);
 }
-.btn-uf:hover {
+.btnW:hover {
 	background: var(--warningH);
 	color: var(--bg);
 }

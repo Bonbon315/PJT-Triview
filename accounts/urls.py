@@ -12,4 +12,5 @@ urlpatterns = [
     path("detail/<int:pk>/", views.detail, name="detail"),
     path("update/", views.update, name="update"),
     path("<int:pk>/follow/", views.follow, name="follow"),
+    path("dropout/", views.dropout, name="dropout"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
