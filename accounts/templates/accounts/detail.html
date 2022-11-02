@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% if user.profile_image %}
-<img class="image" src="{{ user.profile_image.url }}" />
-{% endif %}
+
 <div>
     <h1 class="tit">My Page</h1>
+    {% if user.profile_image %}
+    <div>
+        <img class="prof-img" src="{{ user.profile_image.url }}" />
+    </div>
+    {% endif %}
     <div class="d-flex justify-content-between">
         <div>
             <h3>{{user.username }}님</h3>
