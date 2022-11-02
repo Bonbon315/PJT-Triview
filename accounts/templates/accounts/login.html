@@ -2,11 +2,22 @@
 {% load django_bootstrap5 %}
 {% load widget_tweaks %}
 {% block content %}
-  <h1 class="tit">로그인</h1>
-  <form action="" method="POST">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <button type="submit" class="btn-sb btnC">로그인</button>
+<h1 class="tit">로그인</h1>
+<form action="" method="POST" id="login-form">
+  {% csrf_token %}
+  <ul class="form-list">
+    <li>
+      <label for="username">ID</label>
+      {% render_field form.username class+="userID" %}
+    </li>
+    <li>
+      <label for="password">Password</label>
+      {% render_field form.password class+="userPW" %}
+    </li>
+    <li>
+      <button type="submit" class="btn-sb btnC">로그인</button>
+    </li>
+  </ul>
 
-  </form>
+</form>
 {% endblock content %}

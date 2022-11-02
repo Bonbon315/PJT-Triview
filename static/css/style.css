@@ -1,13 +1,14 @@
 @import url(./fontall.css);
+/* base */
 :root {
 	--main: #49beb7;
 	--highlight: #83d8d2;
 	--warning: #ff8a5c;
 	--warningH: #f0622a;
 	--bg: #fcf9ea;
+	--bgD: #eee9d7;
 	--txt: #393e46;
 }
-
 body {
 	font-family: "NanumSquareNeo", sans-serif;
 	color: var(--txt);
@@ -22,6 +23,7 @@ a:hover {
 	color: inherit;
 }
 
+/* header */
 .logo img {
 	width: 180px;
 }
@@ -43,7 +45,6 @@ a:hover {
 	left: 0px;
 	transition: 0.2s;
 }
-
 .nav-area li a:hover {
 	color: var(--main);
 	font-weight: 700;
@@ -51,21 +52,72 @@ a:hover {
 .nav-area li a:hover::after {
 	width: 100%;
 }
-
+/* content */
 .tit {
 	font-size: 2rem;
 	font-weight: 700;
 	text-align: center;
 	margin: 2rem 0;
 }
+
+/* form control */
+#login-form .form-list {
+	text-align: center;
+	max-width: 900px;
+	margin: 0 auto;
+}
+#login-form .form-list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#login-form .form-list li:first-child {
+	margin-bottom: 1rem;
+}
+#login-form .form-list li label {
+	width: 30%;
+	text-align: right;
+}
+#login-form .form-list li input {
+	border: 2px solid rgba(0, 0, 0, 0);
+	border-radius: 0.6rem;
+	background: var(--bgD);
+	padding: 0.3rem;
+	box-sizing: border-box;
+	transition: 0.2s;
+	width: 50%;
+	margin-right: 15%;
+}
+#login-form .form-list li input:focus {
+	border: 2px solid var(--main);
+	background: var(--bg);
+}
+#signup-form input {
+	border: 2px solid rgba(0, 0, 0, 0);
+	border-radius: 0.6rem;
+	background: var(--bgD);
+	padding: 0.3rem;
+	box-sizing: border-box;
+	transition: 0.2s;
+}
+#signup-form input:focus {
+	border: 2px solid var(--main);
+	background: var(--bg);
+}
+#signup-form .form-text {
+	font-size: 0.85rem;
+}
+
+/* buttons */
 .btnC {
 	background: var(--main);
 	color: var(--bg);
 	display: inline-block;
 	padding: 1rem;
-	margin-top: 1.5rem;
+	margin: 1.8rem auto 0;
 	border-radius: 0.5rem;
 	transition: 0.2s;
+	max-width: 900px;
 }
 .btnC:hover {
 	background: var(--highlight);
@@ -77,16 +129,7 @@ a:hover {
 .btn-sb:hover {
 	background: var(--highlight);
 }
-.btn-fl {
-	background: var(--main);
-	color: var(--bg);
-	padding: 1rem;
-	border-radius: 0.5rem;
-	transition: 0.2s;
-}
-.btn-fl:hover {
-	background: var(--highlight);
-}
+
 .btn-uf {
 	background: var(--warning);
 	color: var(--bg);
@@ -95,11 +138,14 @@ a:hover {
 	background: var(--warningH);
 	color: var(--bg);
 }
+
+/* footer */
 .footer {
 	height: 30px;
 	position: fixed;
 	bottom: 0px;
 }
 .footer .cpr {
-	font-size: 0.8em;
+	margin-left: 0.5rem;
+	font-size: 0.7em;
 }
