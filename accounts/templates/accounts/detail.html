@@ -1,28 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <div>
-    <h1 class="tit">My Page</h1>
-    <div class="d-flex justify-content-between">
-        {% if user.profile_image %}
-        <div>
-            <img class="prof-img" src="{{ user.profile_image.url }}" />
+    <h1 class="tit">Profile</h1>
+    <div class="d-flex justify-content-around">
+        <div class="prof-con">
+            {% if user.profile_image %}
+            <img class="prof-img" src="{{ user.profile_image.url }}" alt="user profile image" />
+            {% else %}
+            <img class="prof-img" src="{% static 'img/profile_dummy.jpg' %}" alt="user profile image - dummy">
+            {% endif %}
         </div>
-        {% endif %}
         <div>
             <h3>{{user.username }}님</h3>
             <p>{{user.email}}</p>
-            <!--접속여부 및 가입일-->
-            <p>가입일자:
-                <span>{{user.date_joined|date:'Y년 m월 d일 A '}}</span>
-            </p>
-            {% if request.user.pk == user.pk %}
-            <p>마지막 로그인 시간은:</p>
-            <p>{{user.last_login|date:'Y년 m월 d일 A g시 i분'}} 입니다!</p>
-            {% endif %}
-            <!--자기자신만 정보 수정 링크 보이게 해둠-->
-            {% if request.user.pk == user.pk %}
-            <a href="{% url 'accounts:update' %}" class="btnC">정보 수정</a>{% endif %}
         </div>
         <div>
             <div class="d-flex text-center">
@@ -38,39 +30,62 @@
             <!--로그인 유무에 따라 팔로우 가능, 자기 자신이 팔로우 금지해둠-->
             {% if request.user != user %}
             {% if request.user.is_authenticated %}
-            {% if user not in request.user.followings.all %}
             <div class="text-center">
+                {% if user not in request.user.followings.all %}
                 <a href="{% url 'accounts:follow' user.pk %}" class="btnC">follow</a>
                 {% else %}
-                <a href="{% url 'accounts:follow' user.pk %}" class="btnC btn-uf">unfollow</a>
+                <a href="{% url 'accounts:follow' user.pk %}" class="btnC btnW">unfollow</a>
+                {% endif %}
+            </div>
+            {% else %}
+            <div>
+                <a href="{% url 'accounts:login' %}" class="btnC">로그인하세요</a>
             </div>
             {% endif %}
+            {% else %}
+            <p class="prof-al">자기자신은 팔로잉할 수 없어요!</p>
         </div>
-        {% else %}
-        <div>
-            <a href="{% url 'accounts:login' %}" class="btnC">로그인하세요</a>
-        </div>
-        {% endif %}
-        {% else %}
-        <p>자기자신은 팔로잉할 수 없어요!</p>
         {% endif %}
     </div>
-</div>
-<!--글작성 목록 및 갯수-->
-<div>
-    <h4>리뷰 작성 목록</h4>
-    <p>{{user.username}}님은 총{{reviews.count}}개의 리뷰를 쓰셨습니다!</p>
-    {% for review in reviews %}
-    <!--차후 리뷰 목록에 갈수 있는 url 생성 이후 링크 추가목적-->
-    <!--<a href="{% url 'reviews:' %}">-->{{review.title}}
-    <!--</a>-->
-    {% endfor %}
-
-    <!--탈퇴 기능-->
-    {% if request.user == user %}
-    <a href="{% url 'accounts:dropout' %}">회원 탈퇴</a>
-    {% endif %}
-
+    <!--자기자신만 정보 수정 링크 보이게 해둠-->
+    {% if request.user.pk == user.pk %}
+    <div class="prof-log d-flex justify-content-around align-items-center mt-3">
+        <div>
+            <!--접속여부 및 가입일-->
+            <p>가입일자:
+                <span>{{user.date_joined|date:'Y년 m월 d일 A '}}</span>
+            </p>
+            <p>마지막 로그인 시간은:
+                <span>{{user.last_login|date:'Y년 m월 d일 A g시 i분'}} 입니다!</span>
+            </p>
+        </div>
+        <div>
+            <a href="{% url 'accounts:update' %}" class="btnC">정보 수정</a>
+        </div>
+        {% endif %}
+    </div>
+    <!--글작성 목록 및 갯수-->
+    <div class="mt-5">
+        <h4 class="sub-tit">리뷰 작성 목록</h4>
+        <p>{{user.username}}님은 총{{reviews.count}}개의 리뷰를 쓰셨습니다!</p>
+        <div>
+            <ul>
+                {% for review in reviews %}
+                <li>
+                    <!--차후 리뷰 목록에 갈수 있는 url 생성 이후 링크 추가목적-->
+                    <!--<a href="{% url 'reviews:' %}">-->{{review.title}}
+                    <!--</a>-->
+                </li>
+            </ul>
+        </div>
+        {% endfor %}
+        <div class="prof-del">
+            <!--탈퇴 기능-->
+            {% if request.user == user %}
+            <a href="{% url 'accounts:dropout' %}" class="btnC btnW">회원 탈퇴</a>
+            {% endif %}
+        </div>
+    </div>
 </div>
 
 {% endblock content %}
