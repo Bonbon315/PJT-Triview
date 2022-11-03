@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% block content %}
-<h1 class='tit'>탈퇴</h1>
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <button type="submit">회원 탈퇴</button>
-</form>
+  <h1 class='tit'>회원 탈퇴</h1>
+  <div class="dropout box">
+    <h5 class="sub-tit">회원 탈퇴를 원하시면 아래 탈퇴 버튼을 눌러주세요.</h5>
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <button type="submit" class="btnC btnW">회원 탈퇴</button>
+    </form>
+  </div>
 {% endblock content %}

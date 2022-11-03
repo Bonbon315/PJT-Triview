@@ -3,11 +3,11 @@
 {% block content %}
 
   {% bootstrap_javascript %}
-
+  <h1 class="tit">여행지 등록</h1>
   <form action="" method="POST" enctype="multipart/form-data" id="loc-form">
     {% csrf_token %}
     {% bootstrap_form location_form %}
-    <button type="submit" class="btn-sb btnC">장소등록</button>
+    <button type="submit" class="btn-sb btnC">장소 등록</button>
 
   </form>
 

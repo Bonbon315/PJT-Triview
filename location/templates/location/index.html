@@ -2,7 +2,7 @@
 {% load django_bootstrap5 %}
 {% block content %}
 
-  <div class="row m-4 g-3">
+  <div class="row m-4 g-3 " id="location">
     {% for location in locations %}
       <div class="col-3 box">
         <a href="{% url 'reviews:index' location.pk %}" class="">

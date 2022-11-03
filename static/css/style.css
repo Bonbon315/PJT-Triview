@@ -15,6 +15,7 @@ body {
 	font-size: 20px;
 	line-height: 1.5;
 	background: var(--bg);
+	position: relative;
 }
 a {
 	color: inherit;
@@ -24,6 +25,10 @@ a:hover {
 }
 
 /* header */
+nav {
+	position: sticky;
+	top: 0;
+}
 .logo img {
 	width: 180px;
 }
@@ -33,6 +38,21 @@ a:hover {
 }
 .nav-area li:last-child {
 	margin-right: 0;
+}
+.nav-area .plane-area {
+	position: relative;
+	overflow: hidden;
+	padding-left: 1.5rem;
+}
+.nav-area .plane-area .plane {
+	color: var(--main);
+	position: absolute;
+	left: 0;
+	bottom: -2rem;
+	transition: 0.4s;
+}
+.nav-area .plane-area a:hover .plane {
+	bottom: 0;
 }
 .nav-area li a::after {
 	content: "";
@@ -206,10 +226,36 @@ a:hover {
 	margin-top: 0;
 }
 
+.prof-rev span {
+	color: var(--main);
+	font-weight: 700;
+}
+.prof-rev .rev-list li {
+	margin: 1rem 0;
+}
+.prof-rev .rev-list li a {
+	transition: 0.2s;
+}
+.prof-rev .rev-list li a:hover {
+	color: var(--main);
+}
 .prof-del .btnC {
 	left: 90%;
 	transform: translateX(0);
 	font-size: 0.95rem;
+}
+#profile .box {
+	padding: 2rem 1rem;
+}
+#profile .box2 {
+	margin-top: 4rem;
+}
+
+.dropout {
+	padding: 2rem;
+}
+.dropout .sub-tit {
+	text-align: center;
 }
 
 /* main */
@@ -271,19 +317,20 @@ a:hover {
 }
 .box .box-img {
 	margin-top: 0.5rem;
-	height: 200px;
+	height: 150px;
 	overflow: hidden;
 	border-radius: 1rem;
+	object-fit: fill;
 }
-.box .sub-tit {
+#location .box .sub-tit {
 	text-align: center;
 	transition: 0.3s;
 }
-.box:hover {
+#location .box:hover {
 	background: var(--bgD);
 	box-shadow: none;
 }
-.box:hover .sub-tit {
+#location .box:hover .sub-tit {
 	color: var(--main);
 }
 
@@ -297,22 +344,23 @@ a:hover {
 .review_section .box {
 	padding: 1rem;
 }
-.rev-info .box:hover {
-	background: var(--bg);
-	box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px rgba(22, 27, 29, 0.1);
+.review_section .loct-grd {
+	margin-left: 1rem;
+	color: var(--main);
 }
-.rev-info .box:hover .sub-tit {
-	color: var(--txt);
+.rev-info .sub-tit {
+	text-align: left;
 }
+
 .rev-area {
-	margin-top: 5rem;
+	margin-top: 3rem;
 }
-.btn-rev {
-	left: 90%;
+.rev-area .tit-area {
+	margin-bottom: 0.8rem;
+}
+.rev-area .tit-area .btnC {
+	left: 35%;
 	transform: translateX(0);
-}
-.tit-area {
-	margin-bottom: 2rem;
 }
 .rev .rev-cont .rev-prof {
 	width: 50px;
@@ -325,8 +373,25 @@ a:hover {
 	width: 50px;
 	height: 50px;
 }
+.rev .rev-cont .rev-grd-area {
+	margin-right: 1rem;
+}
 .rev .rev-cont .rev-grd {
 	color: var(--main);
+}
+.rev .rev-cont .sub-tit {
+	font-size: 1.4rem;
+}
+.rev .rev-cont .sub-info {
+	margin-bottom: 0.8rem;
+}
+.rev .rev-cont .rev-crd {
+	font-size: 0.95rem;
+	margin-top: 1rem;
+}
+.rev .btn-area .btnC {
+	position: unset;
+	transform: none;
 }
 
 /* footer */
