@@ -50,13 +50,13 @@
       </div>
       <!--자기자신만 정보 수정 링크 보이게 해둠-->
       {% if request.user.pk == user.pk %}
-        <div class="prof-log d-flex justify-content-around align-items-center mt-4">
+        <div class="prof-log d-flex justify-content-between align-items-center mt-4 px-3">
           <div>
             <!--접속여부 및 가입일-->
             <p>가입일자:
               <span>{{user.date_joined|date:'Y년 m월 d일 A '}}</span>
             </p>
-            <p>마지막 로그인 시간은:
+            <p>마지막 로그인 시간은
               <span>{{user.last_login|date:'Y년 m월 d일 A g시 i분'}}
                 입니다!</span>
             </p>
@@ -72,10 +72,15 @@
       <!--글작성 목록 및 갯수-->
       <div class="prof-rev">
         <h4 class="sub-tit">리뷰 작성 목록</h4>
-        <p>{{user.username}}님은 총
+        <p>
+          <span>
+            {{user.username}}
+          </span>
+          님은 총
           <span>
             {{reviews.count}}</span>
-          개의 리뷰를 쓰셨습니다!</p>
+          개의 리뷰를 쓰셨습니다!
+        </p>
         <div>
           <ul class="rev-list">
             {% for review in reviews %}

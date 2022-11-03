@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% block content %}
+  <div id="location">
+    <div class="btn-area">
+      <a href="{% url 'location:create' %}" class="btnC">
+        <i class="bi bi-plus-circle"></i>
+        장소 등록하기</a>
+    </div>
+    <div class="row m-4 g-3 ">
+      {% for location in locations %}
+        <div class="col-3 box">
+          <a href="{% url 'reviews:index' location.pk %}">
+            <div class="box-img">
+              <img src="{{ location.image.url }}">
+            </div>
+            <div class="box-cont">
+              <h5 class="sub-tit">{{ location.title }}</h5>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
 
-  <div class="row m-4 g-3 " id="location">
-    {% for location in locations %}
-      <div class="col-3 box">
-        <a href="{% url 'reviews:index' location.pk %}" class="">
-          <div class="box-img">
-            <img src="{{ location.image.url }}">
-          </div>
-          <div class="box-cont">
-            <h5 class="sub-tit">{{ location.title }}</h5>
-          </div>
-        </a>
-      </div>
-    {% endfor %}
   </div>
-
 {% endblock %}
