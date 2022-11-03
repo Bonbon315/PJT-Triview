@@ -419,6 +419,17 @@ header {
 	position: unset;
 	transform: none;
 }
+.rev .box .like-area .like-btn {
+	cursor: pointer;
+}
+.rev .box .like-area .like-view {
+	background: var(--bg);
+	border: 2px solid var(--main);
+	color: var(--main);
+}
+.rev .box .like-area .like-view:hover {
+	background: var(--bg);
+}
 
 /* footer */
 .footer {
