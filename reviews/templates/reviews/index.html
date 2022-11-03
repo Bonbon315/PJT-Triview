@@ -70,14 +70,19 @@
                 <span>{{ review.user }}</span>
               </div>
               <p class="text-end">
-                평점 :{{ review.grade }}
+                평점 : 
+                  <i class="bi-circle{% if review.grade >= 1 %}-fill{% elif 0 < review.grade and review.grade < 1 %}-half{% endif %}" style="color: #00AA6C;"></i>
+                  <i class="bi-circle{% if review.grade >= 2 %}-fill{% elif 1 < review.grade and review.grade < 2 %}-half{% endif %}" style="color: #00AA6C;"></i>
+                  <i class="bi-circle{% if review.grade >= 3 %}-fill{% elif 2 < review.grade and review.grade < 3 %}-half{% endif %}" style="color: #00AA6C;"></i>
+                  <i class="bi-circle{% if review.grade >= 4 %}-fill{% elif 3 < review.grade and review.grade < 4 %}-half{% endif %}" style="color: #00AA6C;"></i>
+                  <i class="bi-circle{% if review.grade >= 5 %}-fill{% elif 4 < review.grade and review.grade < 5 %}-half{% endif %}" style="color: #00AA6C;"></i>
                 <span>
                   여행일 :{{ review.traveled_at }}
                 </span>
               </p>
               <h5 class="sub-tit">{{ review.title }}</h5>
               <p>{{ review.content }}</p>
-              <p class="rev-crd text-end">작성 :{{ review.created_at }}</p>
+              <p class="rev-crd text-end">작성 :{{ review.created_at|date:'Y년 m월 d일 A g시 i분' }}</p>
             </div>
             <!--좋아요 기능-->
             <div class="like-area">
