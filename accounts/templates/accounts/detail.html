@@ -88,7 +88,9 @@
           <ul class="rev-list">
             {% for review in reviews %}
               <li>
-                <a href="{% url 'reviews:index' review.location.pk %}">{{review.location.title}}에서
+                <a href="{% url 'reviews:index' review.location.pk %}">
+                  <i class="bi bi-caret-right-fill"></i>
+                  {{review.location.title}}에서
                   {{review.title}}</a>
               </li>
             {% endfor %}
