@@ -2,7 +2,6 @@ from random import choices
 from django.db import models
 from imagekit.models import ProcessedImageField
 from django.conf import settings
-from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
@@ -24,3 +23,5 @@ class Location(models.Model):
     country = models.CharField(max_length=80)
     city = models.CharField(max_length=80)
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default="관광지")
+    lat = models.CharField(max_length=80)
+    lng = models.CharField(max_length=80)
