@@ -21,22 +21,25 @@
           <div class="d-flex justify-content-between  text-center">
             <div class="me-3">
               <p>팔로잉</p>
-              <span>{{user.followings.count}}</span>
+              <span id="followings-count">{{user.followings.count}}</span>
             </div>
             <div>
               <p>팔로워</p>
-              <span>{{user.follower.count}}</span>
+              <span id="followers-count">{{user.follower.count}}</span>
             </div>
           </div>
           <!--로그인 유무에 따라 팔로우 가능, 자기 자신이 팔로우 금지해둠-->
           {% if request.user != user %}
             {% if request.user.is_authenticated %}
               <div class="text-center">
-                {% if user not in request.user.followings.all %}
-                  <a href="{% url 'accounts:follow' user.pk %}" class="btnC">follow</a>
-                {% else %}
-                  <a href="{% url 'accounts:follow' user.pk %}" class="btnC btnW">unfollow</a>
-                {% endif %}
+                <form action="" id="follow-form" data-user-id="{{user.pk}}">
+                  {% csrf_token %}
+                  {% if user not in request.user.followings.all %}
+                    <button type="submit" class="btnC" id="follow-btn">follow</button>
+                  {% else %}
+                    <button type="submit" class="btnC btnW" id="follow-btn">unfollow</button>
+                  {% endif %}
+                </form>
               </div>
             {% else %}
               <div>

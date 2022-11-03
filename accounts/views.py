@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login
 from django.contrib.auth import logout
@@ -9,6 +9,8 @@ from django.views.decorators.http import require_POST
 from django.http import Http404
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
+from django.views.decorators.http import require_POST
+from django.http import JsonResponse
 
 # Create your views here.
 # 회원가입
@@ -74,13 +76,21 @@ def update(request):
 # 팔로우 기능
 @login_required
 def follow(request, pk):
+    user = get_object_or_404(get_user_model(), pk=pk)
     if request.user != get_user_model().objects.get(pk=pk):
         if request.user not in get_user_model().objects.get(pk=pk).follower.all():
             request.user.followings.add(get_user_model().objects.get(pk=pk))
+            is_follow = True
         else:
             request.user.followings.remove(get_user_model().objects.get(pk=pk))
+            is_follow = False
+        context = {
+            "isFollow": is_follow,
+            "followers_count": user.follower.count(),
+            "followings_count": user.followings.count(),
+        }
 
-    return redirect("accounts:detail", pk)
+    return JsonResponse(context)
 
 
 # 탈퇴
