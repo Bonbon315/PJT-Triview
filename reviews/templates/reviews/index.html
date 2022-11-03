@@ -3,7 +3,7 @@
 
 {% block content %}
 
-  <div class="container">
+  <div class="container review">
 
     <div id="carouselExampleIndicators" class="carousel slide loct-crs" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -47,10 +47,10 @@
     </div>
   </section>
   <section class="review_section rev-area">
-    <div>
+    <div class="tit-area">
       <h3 class="sub-tit">리뷰</h3>
       {% if request.user.is_authenticated %}
-        <a class="btnC" href="{% url 'reviews:create' location.pk %}">리뷰 작성</a>
+        <a class="btnC btn-rev" href="{% url 'reviews:create' location.pk %}">리뷰 작성</a>
       {% endif %}
     </div>
     <!--리뷰 쌓이는 곳-->
@@ -70,12 +70,12 @@
                 <span>{{ review.user }}</span>
               </div>
               <p class="text-end">
-                평점 : 
-                  <i class="bi-circle{% if review.grade >= 1 %}-fill{% elif 0 < review.grade and review.grade < 1 %}-half{% endif %}" style="color: #00AA6C;"></i>
-                  <i class="bi-circle{% if review.grade >= 2 %}-fill{% elif 1 < review.grade and review.grade < 2 %}-half{% endif %}" style="color: #00AA6C;"></i>
-                  <i class="bi-circle{% if review.grade >= 3 %}-fill{% elif 2 < review.grade and review.grade < 3 %}-half{% endif %}" style="color: #00AA6C;"></i>
-                  <i class="bi-circle{% if review.grade >= 4 %}-fill{% elif 3 < review.grade and review.grade < 4 %}-half{% endif %}" style="color: #00AA6C;"></i>
-                  <i class="bi-circle{% if review.grade >= 5 %}-fill{% elif 4 < review.grade and review.grade < 5 %}-half{% endif %}" style="color: #00AA6C;"></i>
+                평점 :
+                <i class="rev-grd bi-circle{% if review.grade >= 1 %}-fill{% elif 0 < review.grade and review.grade < 1 %}-half{% endif %}"></i>
+                <i class="rev-grd bi-circle{% if review.grade >= 2 %}-fill{% elif 1 < review.grade and review.grade < 2 %}-half{% endif %}"></i>
+                <i class="rev-grd bi-circle{% if review.grade >= 3 %}-fill{% elif 2 < review.grade and review.grade < 3 %}-half{% endif %}"></i>
+                <i class="rev-grd bi-circle{% if review.grade >= 4 %}-fill{% elif 3 < review.grade and review.grade < 4 %}-half{% endif %}"></i>
+                <i class="rev-grd bi-circle{% if review.grade >= 5 %}-fill{% elif 4 < review.grade and review.grade < 5 %}-half{% endif %}"></i>
                 <span>
                   여행일 :{{ review.traveled_at }}
                 </span>

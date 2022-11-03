@@ -65,6 +65,40 @@ a:hover {
 	margin: 1rem 0;
 }
 
+/* buttons */
+.btnC {
+	background: var(--main);
+	color: var(--bg);
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	margin: 1.8rem auto 0;
+	border-radius: 0.5rem;
+	transition: 0.2s;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	max-width: 900px;
+}
+.btnC:hover {
+	background: var(--highlight);
+	color: var(--bg);
+}
+.btn-sb {
+	width: 100%;
+}
+.btn-sb:hover {
+	background: var(--highlight);
+}
+
+.btnW {
+	background: var(--warning);
+	color: var(--bg);
+}
+.btnW:hover {
+	background: var(--warningH);
+	color: var(--bg);
+}
+
 /* form control */
 #login-form .form-list {
 	text-align: center;
@@ -127,7 +161,8 @@ a:hover {
 
 #update-form input,
 #pw-form input,
-#loc-form input {
+#loc-form input,
+#rev-form input {
 	border: 2px solid rgba(0, 0, 0, 0);
 	border-radius: 0.6rem;
 	background: var(--bgD);
@@ -137,7 +172,8 @@ a:hover {
 }
 #update-form input:focus,
 #pw-form input:focus,
-#loc-form input:focus {
+#loc-form input:focus,
+#rev-form input:focus {
 	border: 2px solid var(--main);
 	background: var(--bg);
 }
@@ -252,10 +288,10 @@ a:hover {
 }
 
 /* review */
-.carousel-item {
+.review .carousel-item {
 	height: 580px;
 }
-.carousel-item img {
+.review .carousel-item img {
 	width: 100%;
 }
 .review_section .box {
@@ -271,6 +307,13 @@ a:hover {
 .rev-area {
 	margin-top: 5rem;
 }
+.btn-rev {
+	left: 90%;
+	transform: translateX(0);
+}
+.tit-area {
+	margin-bottom: 2rem;
+}
 .rev .rev-cont .rev-prof {
 	width: 50px;
 	height: 50px;
@@ -282,39 +325,8 @@ a:hover {
 	width: 50px;
 	height: 50px;
 }
-
-/* buttons */
-.btnC {
-	background: var(--main);
-	color: var(--bg);
-	display: inline-block;
-	padding: 0.5rem 1rem;
-	margin: 1.8rem auto 0;
-	border-radius: 0.5rem;
-	transition: 0.2s;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-	max-width: 900px;
-}
-.btnC:hover {
-	background: var(--highlight);
-	color: var(--bg);
-}
-.btn-sb {
-	width: 100%;
-}
-.btn-sb:hover {
-	background: var(--highlight);
-}
-
-.btnW {
-	background: var(--warning);
-	color: var(--bg);
-}
-.btnW:hover {
-	background: var(--warningH);
-	color: var(--bg);
+.rev .rev-cont .rev-grd {
+	color: var(--main);
 }
 
 /* footer */
