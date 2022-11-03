@@ -47,7 +47,7 @@ class Review(models.Model):
         options={"quality": 80},
     )
   traveled_at = models.CharField(max_length=12, choices=Month_choices, default='2022년 11월')
-  companion = models.CharField(max_length=6, choices=Companion, default='커플')
+  companion = models.CharField(max_length=6, choices=Companion, default='가족')
   user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
   like_users = models.ManyToManyField(
         settings.AUTH_USER_MODEL, related_name="like_reviews"
