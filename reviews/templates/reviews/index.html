@@ -69,7 +69,9 @@
                     <img class="prof-img" src="{% static 'img/profile_dummy.jpg' %}" alt="user profile image - dummy">
                   {% endif %}
                 </div>
-                <span><a href="{% url 'accounts:detail' review.user.pk %}">{{ review.user }}</a></span>
+                <span>
+                  <a href="{% url 'accounts:detail' review.user.pk %}">{{ review.user }}</a>
+                </span>
               </div>
               <h5 class="sub-tit">{{ review.title }}</h5>
               <p class="sub-info">
@@ -94,15 +96,15 @@
             <div class="btn-area d-flex justify-content-between">
               <div class="like-area">
                 {% if request.user in review.like_users.all %}
-                  <a href="{% url 'reviews:like' review.pk %}" class="btnC">
-                    {{ review.like_users.count }}
+                  <p class="btnC like-btn" data-review-id="{{review.pk}}">
                     <i class="bi bi-hand-thumbs-up-fill"></i>
-                  </a>
+                    <span class="like-count">{{review.like_users.count}}</span>
+                  </p>
                 {% else %}
-                  <a href="{% url 'reviews:like' review.pk %}" class="btnC btnW">
-                    {{review.like_users.count }}
-                    <i class="bi bi-hand-thumbs-up"></i>
-                  </a>
+                  <p class="btnC btnW like-btn" data-review-id="{{review.pk}}">
+                    <i class="bi bi-hand-thumbs-up like-icon"></i>
+                    <span class="like-count">{{review.like_users.count}}</span>
+                  </p>
                 {% endif %}
               </div>
               <!--수정, 삭제 기능-->
