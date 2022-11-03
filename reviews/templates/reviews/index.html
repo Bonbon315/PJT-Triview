@@ -30,7 +30,7 @@
   </div>
   <div class="review_section d-flex justify-content-center align-items-center">
     <h1 class="tit">{{location.title}}</h1>
-    <div class="d-flex justify-content-center text-success mb-2">
+    <div class="d-flex justify-content-center loct-grd">
       <div class="bi-star{% if location_grade >= 1 %}-fill{% elif 0 < location_grade and location_grade < 1 %}-half{% endif %}"></div>
       <div class="bi-star{% if location_grade >= 2 %}-fill{% elif 1 < location_grade and location_grade < 2 %}-half{% endif %}"></div>
       <div class="bi-star{% if location_grade >= 3 %}-fill{% elif 2 < location_grade and location_grade < 3 %}-half{% endif %}"></div>
@@ -47,10 +47,10 @@
     </div>
   </section>
   <section class="review_section rev-area">
-    <div class="tit-area">
+    <div class="tit-area d-flex">
       <h3 class="sub-tit">리뷰</h3>
       {% if request.user.is_authenticated %}
-        <a class="btnC btn-rev" href="{% url 'reviews:create' location.pk %}">리뷰 작성</a>
+        <a class="btnC" href="{% url 'reviews:create' location.pk %}">리뷰 작성</a>
       {% endif %}
     </div>
     <!--리뷰 쌓이는 곳-->
@@ -69,41 +69,44 @@
                 </div>
                 <span>{{ review.user }}</span>
               </div>
-              <p class="text-end">
-                평점 :
-                <i class="rev-grd bi-circle{% if review.grade >= 1 %}-fill{% elif 0 < review.grade and review.grade < 1 %}-half{% endif %}"></i>
-                <i class="rev-grd bi-circle{% if review.grade >= 2 %}-fill{% elif 1 < review.grade and review.grade < 2 %}-half{% endif %}"></i>
-                <i class="rev-grd bi-circle{% if review.grade >= 3 %}-fill{% elif 2 < review.grade and review.grade < 3 %}-half{% endif %}"></i>
-                <i class="rev-grd bi-circle{% if review.grade >= 4 %}-fill{% elif 3 < review.grade and review.grade < 4 %}-half{% endif %}"></i>
-                <i class="rev-grd bi-circle{% if review.grade >= 5 %}-fill{% elif 4 < review.grade and review.grade < 5 %}-half{% endif %}"></i>
+              <h5 class="sub-tit">{{ review.title }}</h5>
+              <p class="sub-info">
+                <span class="rev-grd-area">
+                  <i class="rev-grd bi-circle{% if review.grade >= 1 %}-fill{% elif 0 < review.grade and review.grade < 1 %}-half{% endif %}"></i>
+                  <i class="rev-grd bi-circle{% if review.grade >= 2 %}-fill{% elif 1 < review.grade and review.grade < 2 %}-half{% endif %}"></i>
+                  <i class="rev-grd bi-circle{% if review.grade >= 3 %}-fill{% elif 2 < review.grade and review.grade < 3 %}-half{% endif %}"></i>
+                  <i class="rev-grd bi-circle{% if review.grade >= 4 %}-fill{% elif 3 < review.grade and review.grade < 4 %}-half{% endif %}"></i>
+                  <i class="rev-grd bi-circle{% if review.grade >= 5 %}-fill{% elif 4 < review.grade and review.grade < 5 %}-half{% endif %}"></i>
+                </span>
                 <span>
                   여행일 :{{ review.traveled_at }}
                 </span>
               </p>
-              <h5 class="sub-tit">{{ review.title }}</h5>
               <p>{{ review.content }}</p>
-              <p class="rev-crd text-end">작성 :{{ review.created_at|date:'Y년 m월 d일 A g시 i분' }}</p>
+              <p class="rev-crd text-end">{{ review.created_at|date:'Y년 m월 d일 A g시 i분' }}</p>
             </div>
             <!--좋아요 기능-->
-            <div class="like-area">
-              {% if request.user in review.like_users.all %}
-                <a href="{% url 'reviews:like' review.pk %}" class="btnC">
-                  {{ review.like_users.count }}
-                  <i class="bi bi-heart-fill"></i>
-                </a>
-              {% else %}
-                <a href="{% url 'reviews:like' review.pk %}" class="btnC btnW">
-                  {{review.like_users.count }}
-                  <i class="bi bi-heart"></i>
-                </a>
-              {% endif %}
-            </div>
-            <!--수정, 삭제 기능-->
-            <div>
-              {% if request.user == review.user %}
-                <a class='btnC' href="{% url 'reviews:update' review.pk %}">수정</a>
-                <a class='btnC btnW' href="{% url 'reviews:delete' review.pk %}">삭제</a>
-              {% endif %}
+            <div class="btn-area d-flex justify-content-between">
+              <div class="like-area">
+                {% if request.user in review.like_users.all %}
+                  <a href="{% url 'reviews:like' review.pk %}" class="btnC">
+                    {{ review.like_users.count }}
+                    <i class="bi bi-heart-fill"></i>
+                  </a>
+                {% else %}
+                  <a href="{% url 'reviews:like' review.pk %}" class="btnC btnW">
+                    {{review.like_users.count }}
+                    <i class="bi bi-heart"></i>
+                  </a>
+                {% endif %}
+              </div>
+              <!--수정, 삭제 기능-->
+              <div>
+                {% if request.user == review.user %}
+                  <a class='btnC' href="{% url 'reviews:update' review.pk %}">수정</a>
+                  <a class='btnC btnW' href="{% url 'reviews:delete' review.pk %}">삭제</a>
+                {% endif %}
+              </div>
             </div>
           </div>
         {% endif %}
