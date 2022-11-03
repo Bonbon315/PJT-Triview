@@ -9,7 +9,7 @@ from django.contrib import messages
 # 여행지-리뷰페이지
 def index(request, location_pk):
     location = Location.objects.get(id=location_pk)
-    reviews = Review.objects.all()
+    reviews = Review.objects.order_by('-pk')
     grade = 0
     cnt = 0
     for review in reviews:
@@ -23,7 +23,9 @@ def index(request, location_pk):
         "location": location,
         "location_grade": grade,
     }
+    
     return render(request, "reviews/index.html", context)
+    
 
 
 # 여행지-리뷰작성
