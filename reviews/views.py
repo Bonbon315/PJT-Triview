@@ -1,15 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ReviewForm
 from .models import Review
 from location.models import Location
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import JsonResponse
+
 # Create your views here.
 
 # 여행지-리뷰페이지
 def index(request, location_pk):
     location = Location.objects.get(id=location_pk)
-    reviews = Review.objects.order_by('-pk')
+    reviews = Review.objects.order_by("-pk")
     grade = 0
     cnt = 0
     for review in reviews:
@@ -23,9 +25,8 @@ def index(request, location_pk):
         "location": location,
         "location_grade": grade,
     }
-    
+
     return render(request, "reviews/index.html", context)
-    
 
 
 # 여행지-리뷰작성
@@ -46,6 +47,7 @@ def create(request, location_pk):
         "review_form": review_form,
     }
     return render(request, "reviews/create.html", context)
+
 
 # 여행자 리뷰 수정
 @login_required
@@ -72,13 +74,20 @@ def update(request, review_pk):
 def delete(request, review_pk):
     review = Review.objects.get(pk=review_pk)  # 어떤 글인지
     review.delete()
-    return redirect('reviews:index', review.location.id)
+    return redirect("reviews:index", review.location.id)
+
 
 # 여행자 리뷰 좋아요
 def like(request, review_pk):
-    review = Review.objects.get(pk=review_pk)
+    review = get_object_or_404(Review, pk=review_pk)
     if request.user in review.like_users.all():
         review.like_users.remove(request.user)
+        is_liked = False
     else:
         review.like_users.add(request.user)
-    return redirect("reviews:index", review.location.id)
+        is_liked = True
+    context = {
+        "isLiked": is_liked,
+        "likeCount": review.like_users.count(),
+    }
+    return JsonResponse(context)
