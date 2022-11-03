@@ -4,7 +4,7 @@
 {% block content %}
   <h1 class='tit'>리뷰</h1>
 
-  <form action='' method='POST' enctype="multipart/form-data">
+  <form action='' method='POST' enctype="multipart/form-data" id="rev-form">
     {% csrf_token %}
     <label for="" class="form-label">여행 일자</label>
     {% render_field review_form.traveled_at class+="form-control"%}
