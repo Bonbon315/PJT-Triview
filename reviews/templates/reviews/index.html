@@ -50,7 +50,9 @@
     <div class="tit-area d-flex">
       <h3 class="sub-tit">리뷰</h3>
       {% if request.user.is_authenticated %}
-        <a class="btnC" href="{% url 'reviews:create' location.pk %}">리뷰 작성</a>
+        <a class="btnC" href="{% url 'reviews:create' location.pk %}">리뷰 작성
+          <i class="bi bi-pencil"></i>
+        </a>
       {% endif %}
     </div>
     <!--리뷰 쌓이는 곳-->

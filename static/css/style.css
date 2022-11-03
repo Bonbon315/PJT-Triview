@@ -15,7 +15,6 @@ body {
 	font-size: 20px;
 	line-height: 1.5;
 	background: var(--bg);
-	position: relative;
 }
 a {
 	color: inherit;
@@ -25,12 +24,18 @@ a:hover {
 }
 
 /* header */
-nav {
+header {
 	position: sticky;
 	top: 0;
+	z-index: 100;
+	background: var(--bg);
+}
+
+.logo {
+	width: 180px;
 }
 .logo img {
-	width: 180px;
+	margin-top: 0.3rem;
 }
 .nav-area li {
 	margin-right: 25px;
@@ -169,20 +174,26 @@ nav {
 }
 #signup-form .form-text,
 #update-form .form-text,
-#pw-form .form-text {
+#pw-form .form-text,
+#revud-form .form-text {
 	font-size: 0.85rem;
 }
 #update-form,
 #pw-form,
-#loc-form {
+#loc-form,
+#rev-form,
+#revud-form {
 	max-width: 900px;
-	margin: 0 auto;
+	margin: 0 auto 3rem;
 }
 
 #update-form input,
 #pw-form input,
 #loc-form input,
-#rev-form input {
+#rev-form input,
+#revud-form input,
+#rev-form textarea,
+#revud-form textarea {
 	border: 2px solid rgba(0, 0, 0, 0);
 	border-radius: 0.6rem;
 	background: var(--bgD);
@@ -193,7 +204,10 @@ nav {
 #update-form input:focus,
 #pw-form input:focus,
 #loc-form input:focus,
-#rev-form input:focus {
+#rev-form input:focus,
+#revud-form input:focus,
+#rev-form textarea:focus,
+#revud-form textarea:focus {
 	border: 2px solid var(--main);
 	background: var(--bg);
 }
@@ -218,6 +232,7 @@ nav {
 .prof-al {
 	margin-top: 1rem;
 	font-size: 0.9rem;
+	opacity: 0.6;
 }
 .prof-log p {
 	font-size: 0.95rem;
@@ -225,11 +240,15 @@ nav {
 .prof-log .btnC {
 	margin-top: 0;
 }
+.prof-rev .sub-tit {
+	margin-bottom: 1.5rem;
+}
 
 .prof-rev span {
 	color: var(--main);
 	font-weight: 700;
 }
+
 .prof-rev .rev-list li {
 	margin: 1rem 0;
 }
@@ -322,6 +341,10 @@ nav {
 	border-radius: 1rem;
 	object-fit: fill;
 }
+#location .btn-area .btnC {
+	left: 80%;
+	transform: none;
+}
 #location .box .sub-tit {
 	text-align: center;
 	transition: 0.3s;
@@ -356,11 +379,14 @@ nav {
 	margin-top: 3rem;
 }
 .rev-area .tit-area {
-	margin-bottom: 0.8rem;
+	margin-bottom: 1.5rem;
 }
 .rev-area .tit-area .btnC {
 	left: 35%;
 	transform: translateX(0);
+}
+.rev .box {
+	padding: 1.5rem;
 }
 .rev .rev-cont .rev-prof {
 	width: 50px;
@@ -389,7 +415,7 @@ nav {
 	font-size: 0.95rem;
 	margin-top: 1rem;
 }
-.rev .btn-area .btnC {
+.rev .box .btn-area .btnC {
 	position: unset;
 	transform: none;
 }

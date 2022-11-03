@@ -83,6 +83,7 @@ button {
 
 body {
 	line-height: 1;
+	position: relative;
 }
 
 img {
@@ -120,11 +121,6 @@ select {
 	box-sizing: border-box;
 }
 
-.cl::after {
-	content: "";
-	display: block;
-	clear: both;
-}
 .blind {
 	display: block;
 	width: 1px;

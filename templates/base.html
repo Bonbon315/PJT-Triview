@@ -22,14 +22,14 @@
 
   <body>
     <header>
-      <nav class="py-3">
+      <nav class="py-2">
         <div class="container d-flex justify-content-between ">
           <div class="logo">
             <a href="{% url 'index' %}">
               <img src="{% static 'img/trv_logo.svg' %}" alt="trv_logo">
             </a>
           </div>
-          <div class="">
+          <div class="align-items-center">
             <ul class="nav-area d-flex justify-content-end">
               <li class="plane-area">
                 <a href="{% url 'location:index' %}">
@@ -58,7 +58,6 @@
           </div>
         </div>
       </nav>
-
     </header>
     <main>
       <div class="container">
