@@ -64,12 +64,12 @@
               <div class="d-flex justify-content-start align-items-center">
                 <div class="rev-prof">
                   {% if user.profile_image %}
-                    <img class="prof-img" src="{{ user.profile_image.url }}" alt="user profile image"/>
+                    <img class="prof-img" src="{{ review.user.profile_image.url }}" alt="user profile image"/>
                   {% else %}
                     <img class="prof-img" src="{% static 'img/profile_dummy.jpg' %}" alt="user profile image - dummy">
                   {% endif %}
                 </div>
-                <span>{{ review.user }}</span>
+                <span><a href="{% url 'accounts:detail' review.user.pk %}">{{ review.user }}</a></span>
               </div>
               <h5 class="sub-tit">{{ review.title }}</h5>
               <p class="sub-info">
@@ -84,6 +84,9 @@
                   여행일 :{{ review.traveled_at }}
                 </span>
               </p>
+              {% if review.image %}
+                <img src="{{ review.image.url }}" alt="{{ review.image }}" width="100" height="100">
+              {% endif %}
               <p>{{ review.content }}</p>
               <p class="rev-crd text-end">{{ review.created_at|date:'Y년 m월 d일 A g시 i분' }}</p>
             </div>
@@ -93,12 +96,12 @@
                 {% if request.user in review.like_users.all %}
                   <a href="{% url 'reviews:like' review.pk %}" class="btnC">
                     {{ review.like_users.count }}
-                    <i class="bi bi-heart-fill"></i>
+                    <i class="bi bi-hand-thumbs-up-fill"></i>
                   </a>
                 {% else %}
                   <a href="{% url 'reviews:like' review.pk %}" class="btnC btnW">
                     {{review.like_users.count }}
-                    <i class="bi bi-heart"></i>
+                    <i class="bi bi-hand-thumbs-up"></i>
                   </a>
                 {% endif %}
               </div>
