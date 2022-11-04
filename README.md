@@ -11,6 +11,7 @@
 - 👨‍👩‍👧‍👧[Contributor](#contributor)
 - ✉[Postscript](#Postscript)
 ### 📃Description
+![Triview](tripreview.png)
 ⭐팀명 트리뷰는 trip+review의 합성어입니다.<br>
 <br>
 여행지 정보 및 후기 공유 커뮤니티 서비스를 만드는 것이 프로젝트의 목적이였기 때문에 팀명을 정하는 것에 많은 의견이 오갔습니다.<br>
