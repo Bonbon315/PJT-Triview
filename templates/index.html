@@ -2,139 +2,134 @@
 {% load static %}
 
 {% block indexbody %}
-<div class="container">
+  <div class="container">
     <section class="idx-sect section1">
-        <h2 class="tit">오늘의 여행지</h2>
-        <div class="d-flex justify-content-evenly">
-            <div class="cont-area">
-                <img src="{% static 'img/busan.jpg' %}" alt="">
-                <div class="cont-txt sub-tit">
-                    <p>부산</p>
-                </div>
-            </div>
-            <div class="cont-area">
-                <img src="{% static 'img/osaka.jpg' %}" alt="">
-                <div class="cont-txt sub-tit">
-                    <p>오사카</p>
-                </div>
-            </div>
-            <div class="cont-area">
-                <img src="{% static 'img/berlin.jpg' %}" alt="">
-                <div class="cont-txt sub-tit">
-                    <p>베를린</p>
-                </div>
-            </div>
-            <div class="cont-area">
-                <img src="{% static 'img/paris.jpg' %}" alt="">
-                <div class="cont-txt sub-tit">
-                    <p>파리</p>
-                </div>
-            </div>
+      <h2 class="tit">오늘의 여행지</h2>
+      <div class="d-flex justify-content-between">
+        <div class="cont-area">
+          <img src="{% static 'img/busan.jpg' %}" alt="">
+          <div class="cont-txt sub-tit">
+            <p>부산</p>
+          </div>
         </div>
+        <div class="cont-area">
+          <img src="{% static 'img/osaka.jpg' %}" alt="">
+          <div class="cont-txt sub-tit">
+            <p>오사카</p>
+          </div>
+        </div>
+        <div class="cont-area">
+          <img src="{% static 'img/berlin.jpg' %}" alt="">
+          <div class="cont-txt sub-tit">
+            <p>베를린</p>
+          </div>
+        </div>
+        <div class="cont-area">
+          <img src="{% static 'img/paris.jpg' %}" alt="">
+          <div class="cont-txt sub-tit">
+            <p>파리</p>
+          </div>
+        </div>
+      </div>
     </section>
     <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="5000">
+          <img src="{% static 'img/banner_1.jpg' %}" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="sub-tit">겨울철 인기 휴양지</h5>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="5000">
-                <img src="{% static 'img/banner_1.jpg' %}" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5 class="sub-tit">겨울철 인기 휴양지</h5>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="5000">
-                <img src="{% static 'img/banner_2.jpg' %}" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5 class="sub-tit">싱가폴</h5>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="5000">
-                <img src="{% static 'img/banner_3.jpg' %}" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5 class="sub-tit">스위스</h5>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                </div>
-            </div>
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="{% static 'img/banner_2.jpg' %}" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="sub-tit">싱가폴</h5>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <div class="carousel-item" data-bs-interval="5000">
+          <img src="{% static 'img/banner_3.jpg' %}" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="sub-tit">스위스</h5>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
     <section class="idx-sect section2 ">
-        <h2 class="tit">인기 여행지</h2>
-        <div class="d-flex justify-content-evenly">
-            <div class="cont-area">
-                <img src="{% static 'img/busan.jpg' %}" alt="">
-                <div class="cont-txt sub-tit">
-                    <p>부산</p>
-                </div>
-            </div>
-            <div class="cont-area">
-                <img src="{% static 'img/osaka.jpg' %}" alt="">
-                <div class="cont-txt sub-tit">
-                    <p>오사카</p>
-                </div>
-            </div>
-            <div class="cont-area">
-                <img src="{% static 'img/berlin.jpg' %}" alt="">
-                <div class="cont-txt sub-tit">
-                    <p>베를린</p>
-                </div>
-            </div>
-            <div class="cont-area">
-                <img src="{% static 'img/paris.jpg' %}" alt="">
-                <div class="cont-txt sub-tit">
-                    <p>파리</p>
-                </div>
-            </div>
+      <h2 class="tit">인기 여행지</h2>
+      <div class="d-flex justify-content-evenly">
+        <div class="cont-area">
+          <img src="{% static 'img/busan.jpg' %}" alt="">
+          <div class="cont-txt sub-tit">
+            <p>부산</p>
+          </div>
         </div>
+        <div class="cont-area">
+          <img src="{% static 'img/osaka.jpg' %}" alt="">
+          <div class="cont-txt sub-tit">
+            <p>오사카</p>
+          </div>
+        </div>
+        <div class="cont-area">
+          <img src="{% static 'img/berlin.jpg' %}" alt="">
+          <div class="cont-txt sub-tit">
+            <p>베를린</p>
+          </div>
+        </div>
+        <div class="cont-area">
+          <img src="{% static 'img/paris.jpg' %}" alt="">
+          <div class="cont-txt sub-tit">
+            <p>파리</p>
+          </div>
+        </div>
+      </div>
     </section>
     <section class="idx-sect section3">
-        <h2 class="tit">추천 여행지</h2>
-        <div class=" d-flex justify-content-evenly">
-            <div class="cont-area">
-                <img src="{% static 'img/busan.jpg' %}" alt="">
-                <div class="cont-txt sub-tit">
-                    <p>부산</p>
-                </div>
-            </div>
-            <div class="cont-area">
-                <img src="{% static 'img/osaka.jpg' %}" alt="">
-                <div class="cont-txt sub-tit">
-                    <p>오사카</p>
-                </div>
-            </div>
-            <div class="cont-area">
-                <img src="{% static 'img/berlin.jpg' %}" alt="">
-                <div class="cont-txt sub-tit">
-                    <p>베를린</p>
-                </div>
-            </div>
-            <div class="cont-area">
-                <img src="{% static 'img/paris.jpg' %}" alt="">
-                <div class="cont-txt sub-tit">
-                    <p>파리</p>
-                </div>
-            </div>
+      <h2 class="tit">추천 여행지</h2>
+      <div class=" d-flex justify-content-evenly">
+        <div class="cont-area">
+          <img src="{% static 'img/busan.jpg' %}" alt="">
+          <div class="cont-txt sub-tit">
+            <p>부산</p>
+          </div>
         </div>
+        <div class="cont-area">
+          <img src="{% static 'img/osaka.jpg' %}" alt="">
+          <div class="cont-txt sub-tit">
+            <p>오사카</p>
+          </div>
+        </div>
+        <div class="cont-area">
+          <img src="{% static 'img/berlin.jpg' %}" alt="">
+          <div class="cont-txt sub-tit">
+            <p>베를린</p>
+          </div>
+        </div>
+        <div class="cont-area">
+          <img src="{% static 'img/paris.jpg' %}" alt="">
+          <div class="cont-txt sub-tit">
+            <p>파리</p>
+          </div>
+        </div>
+      </div>
     </section>
-</div>
+  </div>
 {% endblock indexbody %}
