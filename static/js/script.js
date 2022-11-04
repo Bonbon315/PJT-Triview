@@ -59,14 +59,14 @@ form.addEventListener('submit', function (e) {
 var map;
 
 function initMap() {
-  var seoul = { lat: location_lat ,lng: location_lng };
+  var palce = { lat: location_lat ,lng: location_lng };
   map = new google.maps.Map( document.getElementById('map'), {
       zoom: 15,
-      center: seoul
+      center: palce
     });
 
   new google.maps.Marker({
-    position: seoul,
+    position: palce,
     map: map
   });
 }
