@@ -43,7 +43,11 @@
     <div class="box">
       <h3 class="sub-tit">여행지 소개</h3>
       <div class="cont">
+        {% if location.desc %}
+        <p>{{ location.desc }}</p>
+        {% else %}
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum animi illo harum dolores ab quidem aut aliquid deserunt, tempora repellat dolorum maiores velit corporis? Et autem consequatur velit molestiae reprehenderit.</p>
+        {% endif %}
       </div>
       <!--지도-->
       <h3 class="sub-tit">위치</h3>
