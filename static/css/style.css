@@ -463,6 +463,10 @@ header {
 .rev .rev-cont .sub-info {
 	margin-bottom: 0.8rem;
 }
+.rev .rev-cont .rev-img {
+	width: 150px;
+	cursor: pointer;
+}
 .rev .rev-cont .rev-crd {
 	font-size: 0.95rem;
 	margin-top: 1rem;
