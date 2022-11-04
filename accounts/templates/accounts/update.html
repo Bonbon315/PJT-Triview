@@ -1,17 +1,22 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
-
+{% load static %}
 {% block content %}
-  <h1 class='tit'>회원 정보수정</h1>
-  <form action="" method="POST" enctype="multipart/form-data" id="update-form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <div>
-      <a href="{% url 'accounts:password' %}" class="btnC btnW">비밀번호 수정</a>
+  <div id="update">
+    <div class="tit-area">
+      <img src="{% static 'img/trv_logo.svg' %}" alt="trv_logo" class="logo-img">
+      <h1 class='tit'>회원 정보수정</h1>
     </div>
-    <div>
-      <button type="submit" class="btn-sb btnC">정보 수정</button>
-    </div>
-  </form>
+    <form action="" method="POST" enctype="multipart/form-data" id="update-form">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <div>
+        <a href="{% url 'accounts:password' %}" class="btnC btnW">비밀번호 변경</a>
+        <button type="submit" class="btn-sb btnC">정보 수정</button>
+        <a href="{% url 'accounts:detail' user.pk %}" class="btnC btn-sb btnD">수정 취소</a>
+      </div>
+
+    </form>
+  </div>
 
 {% endblock content %}

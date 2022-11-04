@@ -10,21 +10,21 @@
     <div class="row m-4 g-3 ">
       {% for location in locations %}
         <div class="col-3 box">
-          {% if request.user == location.user %}
-          <div class="justify-content-between">
-            <a class='btnC' href="{% url 'location:update' location.pk %}">수정</a>
-            <a class='btnC btnW' href="{% url 'location:delete' location.pk %}">삭제</a>
-          </div>
-          {% endif %}
           <a href="{% url 'reviews:index' location.pk %}">
             <div class="box-img">
               <img src="{{ location.image.url }}">
             </div>
             <div class="box-cont">
               <h5 class="sub-tit">{{ location.title }}</h5>
+              {% if request.user == location.user %}
+                <div class="d-flex justify-content-end align-items-center btn-area-sm">
+                  <a class='btnC' href="{% url 'location:update' location.pk %}">수정</a>
+                  <a class='btnC btnW' href="{% url 'location:delete' location.pk %}">삭제</a>
+                </div>
+              {% endif %}
             </div>
           </a>
-          
+
         </div>
       {% endfor %}
     </div>

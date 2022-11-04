@@ -48,89 +48,89 @@
       <!--지도-->
       <h3 class="sub-tit">위치</h3>
       <div id="map" class="mt-3" style="width: 100%; height: 400px;"></div>
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHi71SmeJ6RDU4owmJ88GP9xy6dRfv7SY&callback=initMap"></script>
-  </section>
-  <section class="review_section rev-area">
-    <div class="tit-area d-flex">
-      <h3 class="sub-tit">리뷰</h3>
-      {% if request.user.is_authenticated %}
-        <a class="btnC" href="{% url 'reviews:create' location.pk %}">리뷰 작성
-          <i class="bi bi-pencil"></i>
-        </a>
-      {% endif %}
-    </div>
-    <!--리뷰 쌓이는 곳-->
-    <div class="rev">
-      {% for review in reviews %}
-        {% if review.location == location %}
-          <div class="mb-3 box">
-            <div class="rev-cont">
-              <div class="d-flex justify-content-start align-items-center">
-                <div class="rev-prof">
-                  {% if review.user.profile_image %}
-                    <img class="prof-img" src="{{ review.user.profile_image.url }}" alt="user profile image"/>
-                  {% else %}
-                    <img class="prof-img" src="{% static 'img/profile_dummy.jpg' %}" alt="user profile image - dummy">
-                  {% endif %}
+      <script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHi71SmeJ6RDU4owmJ88GP9xy6dRfv7SY&callback=initMap"></script>
+    </section>
+    <section class="review_section rev-area">
+      <div class="tit-area d-flex">
+        <h3 class="sub-tit">리뷰</h3>
+        {% if request.user.is_authenticated %}
+          <a class="btnC" href="{% url 'reviews:create' location.pk %}">리뷰 작성
+            <i class="bi bi-pencil"></i>
+          </a>
+        {% endif %}
+      </div>
+      <!--리뷰 쌓이는 곳-->
+      <div class="rev">
+        {% for review in reviews %}
+          {% if review.location == location %}
+            <div class="mb-3 box">
+              <div class="rev-cont">
+                <div class="d-flex justify-content-start align-items-center">
+                  <div class="rev-prof">
+                    {% if review.user.profile_image %}
+                      <img class="prof-img" src="{{ review.user.profile_image.url }}" alt="user profile image"/>
+                    {% else %}
+                      <img class="prof-img" src="{% static 'img/profile_dummy.jpg' %}" alt="user profile image - dummy">
+                    {% endif %}
+                  </div>
+                  <span>
+                    <a href="{% url 'accounts:detail' review.user.pk %}">{{ review.user }}</a>
+                  </span>
                 </div>
-                <span>
-                  <a href="{% url 'accounts:detail' review.user.pk %}">{{ review.user }}</a>
-                </span>
+                <h5 class="sub-tit">{{ review.title }}</h5>
+                <p class="sub-info">
+                  <span class="rev-grd-area">
+                    <i class="rev-grd bi-circle{% if review.grade >= 1 %}-fill{% elif 0 < review.grade and review.grade < 1 %}-half{% endif %}"></i>
+                    <i class="rev-grd bi-circle{% if review.grade >= 2 %}-fill{% elif 1 < review.grade and review.grade < 2 %}-half{% endif %}"></i>
+                    <i class="rev-grd bi-circle{% if review.grade >= 3 %}-fill{% elif 2 < review.grade and review.grade < 3 %}-half{% endif %}"></i>
+                    <i class="rev-grd bi-circle{% if review.grade >= 4 %}-fill{% elif 3 < review.grade and review.grade < 4 %}-half{% endif %}"></i>
+                    <i class="rev-grd bi-circle{% if review.grade >= 5 %}-fill{% elif 4 < review.grade and review.grade < 5 %}-half{% endif %}"></i>
+                  </span>
+                  <span>
+                    여행일 :{{ review.traveled_at }}
+                  </span>
+                </p>
+                {% if review.image %}
+                  <img src="{{ review.image.url }}" alt="{{ review.image }}" width="100" height="100">
+                {% endif %}
+                <p>{{ review.content }}</p>
+                <p class="rev-crd text-end">{{ review.created_at|date:'Y년 m월 d일 A g시 i분' }}</p>
               </div>
-              <h5 class="sub-tit">{{ review.title }}</h5>
-              <p class="sub-info">
-                <span class="rev-grd-area">
-                  <i class="rev-grd bi-circle{% if review.grade >= 1 %}-fill{% elif 0 < review.grade and review.grade < 1 %}-half{% endif %}"></i>
-                  <i class="rev-grd bi-circle{% if review.grade >= 2 %}-fill{% elif 1 < review.grade and review.grade < 2 %}-half{% endif %}"></i>
-                  <i class="rev-grd bi-circle{% if review.grade >= 3 %}-fill{% elif 2 < review.grade and review.grade < 3 %}-half{% endif %}"></i>
-                  <i class="rev-grd bi-circle{% if review.grade >= 4 %}-fill{% elif 3 < review.grade and review.grade < 4 %}-half{% endif %}"></i>
-                  <i class="rev-grd bi-circle{% if review.grade >= 5 %}-fill{% elif 4 < review.grade and review.grade < 5 %}-half{% endif %}"></i>
-                </span>
-                <span>
-                  여행일 :{{ review.traveled_at }}
-                </span>
-              </p>
-              {% if review.image %}
-                <img src="{{ review.image.url }}" alt="{{ review.image }}" width="100" height="100">
-              {% endif %}
-              <p>{{ review.content }}</p>
-              <p class="rev-crd text-end">{{ review.created_at|date:'Y년 m월 d일 A g시 i분' }}</p>
-            </div>
-            <!--좋아요 기능-->
-            <div class="btn-area d-flex justify-content-between">
-              <div class="like-area">
-                {% if user == review.user %}
-                  <p class="btnC like-view">
-                    <i class="bi bi-hand-thumbs-up-fill"></i>
-                    <span class="like-count">{{review.like_users.count}}</span>
-                  </p>
-                {% else %}
-                  {% if request.user in review.like_users.all %}
-                    <p class="btnC like-btn" data-review-id="{{review.pk}}">
+              <!--좋아요 기능-->
+              <div class="btn-area d-flex justify-content-between">
+                <div class="like-area">
+                  {% if user == review.user %}
+                    <p class="btnC like-view">
                       <i class="bi bi-hand-thumbs-up-fill"></i>
                       <span class="like-count">{{review.like_users.count}}</span>
                     </p>
                   {% else %}
-                    <p class="btnC btnW like-btn" data-review-id="{{review.pk}}">
-                      <i class="bi bi-hand-thumbs-up like-icon"></i>
-                      <span class="like-count">{{review.like_users.count}}</span>
-                    </p>
+                    {% if request.user in review.like_users.all %}
+                      <button class="btnC like-btn" data-review-id="{{review.pk}}">
+                        <i class="bi bi-hand-thumbs-up-fill"></i>
+                        <span class="like-count">{{review.like_users.count}}</span>
+                      </button>
+                    {% else %}
+                      <p class="btnC btnW like-btn" data-review-id="{{review.pk}}">
+                        <i class="bi bi-hand-thumbs-up like-icon"></i>
+                        <span class="like-count">{{review.like_users.count}}</span>
+                      </p>
+                    {% endif %}
                   {% endif %}
-                {% endif %}
-              </div>
-              <!--수정, 삭제 기능-->
-              <div>
-                {% if request.user == review.user %}
-                  <a class='btnC' href="{% url 'reviews:update' review.pk %}">수정</a>
-                  <a class='btnC btnW' href="{% url 'reviews:delete' review.pk %}">삭제</a>
-                {% endif %}
+                </div>
+                <!--수정, 삭제 기능-->
+                <div>
+                  {% if request.user == review.user %}
+                    <a class='btnC' href="{% url 'reviews:update' review.pk %}">수정</a>
+                    <a class='btnC btnW' href="{% url 'reviews:delete' review.pk %}">삭제</a>
+                  {% endif %}
+                </div>
               </div>
             </div>
-          </div>
-        {% endif %}
-      {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 {% endblock content %}
