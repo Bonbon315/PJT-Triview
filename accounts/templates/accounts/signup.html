@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% load widget_tweaks %}
+{% load static %}
 {% block content %}
-  <h1 class="tit">회원 가입</h1>
-  <form action="" method="POST" enctype="multipart/form-data" id="signup-form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    <button type="submit" class="btn-sb btnC">가입하기</button>
-  </form>
+  <div id="signup">
+    <div class="tit-area">
+      <img src="{% static 'img/trv_logo.svg' %}" alt="trv_logo" class="logo-img">
+      <h1 class="tit">회원 가입</h1>
+    </div>
+    <form action="" method="POST" enctype="multipart/form-data" id="signup-form">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <button type="submit" class="btn-sb btnC">가입하기</button>
+    </form>
+  </div>
 {% endblock content %}
