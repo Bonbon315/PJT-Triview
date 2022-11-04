@@ -43,7 +43,11 @@
     <div class="box">
       <h3 class="sub-tit">여행지 소개</h3>
       <div class="cont">
+        {% if location.desc %}
+        <p>{{ location.desc }}</p>
+        {% else %}
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum animi illo harum dolores ab quidem aut aliquid deserunt, tempora repellat dolorum maiores velit corporis? Et autem consequatur velit molestiae reprehenderit.</p>
+        {% endif %}
       </div>
       <!--지도-->
       <h3 class="sub-tit">위치</h3>
@@ -91,7 +95,7 @@
                   </span>
                 </p>
                 {% if review.image %}
-                  <img src="{{ review.image.url }}" alt="{{ review.image }}" width="100" height="100">
+                  <img src="{{ review.image.url }}" alt="{{ review.image }}" width="100" height="100" onclick="window.open(this.src)"/>
                 {% endif %}
                 <p>{{ review.content }}</p>
                 <p class="rev-crd text-end">{{ review.created_at|date:'Y년 m월 d일 A g시 i분' }}</p>
@@ -101,6 +105,7 @@
                 <div class="like-area">
                   {% if user == review.user %}
                     <p class="btnC like-view">
+
                       <i class="bi bi-hand-thumbs-up-fill"></i>
                       <span class="like-count">{{review.like_users.count}}</span>
                     </p>
