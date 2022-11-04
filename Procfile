@@ -1,0 +1,1 @@
+web: gunicorn triview.wsgi --log-file -
