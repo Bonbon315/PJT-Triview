@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load django_bootstrap5 %}
 {% load widget_tweaks %}
 {% block content %}
-<h1 class="tit">로그인</h1>
-<form action="" method="POST" id="login-form">
-  {% csrf_token %}
-  <ul class="form-list">
-    <li>
-      <label for="username">ID</label>
-      {% render_field form.username class+="userID" %}
-    </li>
-    <li>
-      <label for="password">Password</label>
-      {% render_field form.password class+="userPW" %}
-    </li>
-    <li>
-      <button type="submit" class="btn-sb btnC">로그인</button>
-    </li>
-  </ul>
+  <div id="login">
+    <div class="tit-area">
+      <img src="{% static 'img/trv_logo.svg' %}" alt="trv_logo" class="logo-img">
+      <h1 class="tit">로그인</h1>
+    </div>
+    <form action="" method="POST" id="login-form">
+      {% csrf_token %}
+      <ul class="form-list">
+        <li>
+          <label for="username">ID</label>
+          {%render_field form.username class+="userID"%}
+        </li>
+        <li>
+          <label for="password">Password</label>
+          {%render_field form.password class+="userPW"%}
+        </li>
+        <li>
+          <button type="submit" class="btn-sb btnC">로그인</button>
+        </li>
+      </ul>
 
-</form>
+    </form>
+  </div>
 {% endblock content %}
