@@ -22,7 +22,7 @@
 🦄✨팀장 역할과 리뷰 기능 구현은 조본희씨가,<br>
 🐨🌿발표자 역할과 리뷰 기능 구현에 유순일씨가,<br>
 🐰🥕ppt 작성 역할과 프론트엔드 파트 전반과 디자인에 오채현씨가,<br>
-🦝🍈readme 작성 역할과 회원 기능 구현에 권건희씨가,<br>
+🦝🍏readme 작성 역할과 회원 기능 구현에 권건희씨가,<br>
 각각 담당해주셨습니다.<br>
 <br>
 📘content문단에서 본격적이고 최종적인 기능 구현에 대한 설명을 하기 전에<br>
@@ -51,9 +51,15 @@
 <a href="https://github.com/chaehyun-oh"><img src="https://avatars.githubusercontent.com/u/108640873?v=4" width="150" height="150"/></a>
 <a href="https://github.com/yoosoonil"><img src="https://avatars.githubusercontent.com/u/97111793?v=4" width="150" height="150"/></a>
 <a href="https://github.com/Gkhy"><img src="https://avatars.githubusercontent.com/u/108653266?v=4" width="150" height="150"/></a>
-<br>
+<br>🌳🌷🌼🌻🌷🌼🌻🌷🌼🌻🌷🌼🌻🌷🌼🌻🌷🌼🌻🌷🌼🌻🌷🌼🌻🌷🌼🌻🌷🌼🌻🌷🌳
 
 ### ✉Postscript
 
-~~테이블 방식으로 넣을거라고 계획중~~
+|👨‍👩‍👧‍👧조원|✏후기|
+|---|------------|
+|🦄조본희|✨|
+|🐨유순일|🌿|
+|🐰오채원|🥕|
+|🦝권건희|🍏|
+
 
