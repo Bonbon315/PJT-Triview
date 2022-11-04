@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+  <h1 class='tit'>여행지 수정</h1>
+
+  <form action='' method='POST' enctype="multipart/form-data" id="revud-form">
+    {% csrf_token %}
+    {% bootstrap_form location_form %}
+    <button type="submit" class="btnC btn-sb">장소 수정</button>
+
+  </form>
+
+{% endblock content %}
