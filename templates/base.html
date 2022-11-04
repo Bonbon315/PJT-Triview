@@ -16,7 +16,6 @@
   {% endblock css %}
   {% block script %}
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHi71SmeJ6RDU4owmJ88GP9xy6dRfv7SY&callback=initMap"></script>
   <script defer="defer" src="{% static 'js/script.js' %}"></script>
   <script>
     var location_lat = {{ location.lat }};
