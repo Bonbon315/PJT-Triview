@@ -59,14 +59,14 @@ form.addEventListener('submit', function (e) {
 var map;
 
 function initMap() {
-  var palce = { lat: location_lat ,lng: location_lng };
+  var place = { lat: location_lat ,lng: location_lng };
   map = new google.maps.Map( document.getElementById('map'), {
       zoom: 15,
-      center: palce
+      center: place
     });
 
   new google.maps.Marker({
-    position: palce,
+    position: place,
     map: map
   });
 }
