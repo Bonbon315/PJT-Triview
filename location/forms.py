@@ -5,4 +5,13 @@ from .models import Location
 class LocationForm(forms.ModelForm):
     class Meta:
         model = Location
-        fields = ["title", "country", "city", "category", "image", "lat", "lng", ]
+        fields = [
+            "title",
+            "country",
+            "city",
+            "category",
+            "desc",
+            "image",
+            "lat",
+            "lng",
+        ]
