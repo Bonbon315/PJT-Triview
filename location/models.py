@@ -25,3 +25,4 @@ class Location(models.Model):
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default="관광지")
     lat = models.CharField(max_length=80)
     lng = models.CharField(max_length=80)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
