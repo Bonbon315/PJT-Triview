@@ -4,11 +4,13 @@ from .models import Location
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def create(request):
     if request.method == "POST":
         location_form = LocationForm(request.POST, request.FILES)
         if location_form.is_valid():
             location = location_form.save(commit=False)
+            location.user = request.user
             location.save()
             return redirect("location:index")
     else:
