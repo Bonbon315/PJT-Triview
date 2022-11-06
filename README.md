@@ -52,7 +52,17 @@
     -   여행 정보, 리뷰 확인 페이지
 
 ### 📘content
-
+![index](index.png)
+![location](location.png)
+![location](location글.png)
+![location](locationreview.png)
+![location](locationreview2.png)
+![location](review.png)
+![location](글1.png)
+![location](글2.png)
+![account](profile.png)
+![account](profile-delete.png)
+![account](profile-up.png)
 ### 👨‍👩‍👧‍👧contributor
 
 <a href="https://github.com/Bonbon315"><img src="https://avatars.githubusercontent.com/u/108643294?v=4" width="150" height="150"/></a>
