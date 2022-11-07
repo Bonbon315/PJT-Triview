@@ -2,11 +2,13 @@
 {% load django_bootstrap5 %}
 {% block content %}
   <div id="location">
-    <div class="btn-area">
-      <a href="{% url 'location:create' %}" class="btnC">
-        <i class="bi bi-plus-circle"></i>
-        장소 등록하기</a>
-    </div>
+    {% if request.user.is_authenticated %}
+      <div class="btn-area">
+        <a href="{% url 'location:create' %}" class="btnC">
+          <i class="bi bi-plus-circle"></i>
+          장소 등록하기</a>
+      </div>
+    {% endif %}
     <div class="row g-3 mt-3 justify-content-center">
       {% for location in locations %}
         <div class="col-3 box">
