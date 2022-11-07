@@ -7,27 +7,35 @@
       <h2 class="tit">오늘의 여행지</h2>
       <div class="d-flex justify-content-between">
         <div class="cont-area">
-          <img src="{% static 'img/busan.jpg' %}" alt="">
-          <div class="cont-txt sub-tit">
-            <p>부산</p>
+          <a href="{% url 'location:index' %}">
+            <img src="{% static 'img/busan.jpg' %}" alt="">
+            <div class="cont-txt sub-tit">
+              <p>부산</p>
+            </a>
           </div>
         </div>
         <div class="cont-area">
-          <img src="{% static 'img/osaka.jpg' %}" alt="">
-          <div class="cont-txt sub-tit">
-            <p>오사카</p>
+          <a href="{% url 'location:index' %}">
+            <img src="{% static 'img/osaka.jpg' %}" alt="">
+            <div class="cont-txt sub-tit">
+              <p>오사카</p>
+            </a>
           </div>
         </div>
         <div class="cont-area">
-          <img src="{% static 'img/berlin.jpg' %}" alt="">
-          <div class="cont-txt sub-tit">
-            <p>베를린</p>
+          <a href="{% url 'location:index' %}">
+            <img src="{% static 'img/berlin.jpg' %}" alt="">
+            <div class="cont-txt sub-tit">
+              <p>베를린</p>
+            </a>
           </div>
         </div>
         <div class="cont-area">
-          <img src="{% static 'img/paris.jpg' %}" alt="">
-          <div class="cont-txt sub-tit">
-            <p>파리</p>
+          <a href="{% url 'location:index' %}">
+            <img src="{% static 'img/paris.jpg' %}" alt="">
+            <div class="cont-txt sub-tit">
+              <p>파리</p>
+            </a>
           </div>
         </div>
       </div>
@@ -50,7 +58,7 @@
         <div class="carousel-item" data-bs-interval="5000">
           <img src="{% static 'img/banner_2.jpg' %}" alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <h5 class="sub-tit">싱가폴</h5>
+            <h5 class="sub-tit">싱가포르</h5>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             </p>
           </div>
@@ -75,7 +83,7 @@
     </div>
     <section class="idx-sect section2 ">
       <h2 class="tit">인기 여행지</h2>
-      <div class="d-flex justify-content-evenly">
+      <div class="d-flex justify-content-between">
         <div class="cont-area">
           <img src="{% static 'img/busan.jpg' %}" alt="">
           <div class="cont-txt sub-tit">
@@ -104,7 +112,7 @@
     </section>
     <section class="idx-sect section3">
       <h2 class="tit">추천 여행지</h2>
-      <div class=" d-flex justify-content-evenly">
+      <div class=" d-flex justify-content-between">
         <div class="cont-area">
           <img src="{% static 'img/busan.jpg' %}" alt="">
           <div class="cont-txt sub-tit">

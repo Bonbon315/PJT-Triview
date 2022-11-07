@@ -366,7 +366,6 @@ header {
 	box-shadow: -5px -5px 10px #fafbff, 5px 5px 10px rgba(22, 27, 29, 0.1);
 	border-radius: 0.8rem;
 	transition: 0.3s;
-	margin-right: 1rem;
 }
 .box .box-img {
 	margin-top: 0.5rem;
@@ -374,6 +373,9 @@ header {
 	overflow: hidden;
 	border-radius: 1rem;
 	object-fit: fill;
+}
+#location .box {
+	margin: 0.5rem;
 }
 #location .btn-area .btnC {
 	left: 80%;

@@ -7,7 +7,7 @@
         <i class="bi bi-plus-circle"></i>
         장소 등록하기</a>
     </div>
-    <div class="row m-4 g-3 ">
+    <div class="row g-3 mt-3 justify-content-center">
       {% for location in locations %}
         <div class="col-3 box">
           <a href="{% url 'reviews:index' location.pk %}">
